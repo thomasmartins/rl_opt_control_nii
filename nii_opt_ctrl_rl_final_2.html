@@ -7802,7 +7802,7 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Reinforcement-Learning-and-Optimal-Control-for-IRRBB-Hedging-Under-Uncertainty">Reinforcement Learning and Optimal Control for IRRBB Hedging Under Uncertainty<a class="anchor-link" href="#Reinforcement-Learning-and-Optimal-Control-for-IRRBB-Hedging-Under-Uncertainty">¶</a></h1><p>This notebook builds an example of IRRBB (NII) hedging using term structure models, statistical time series, control theory, and reinforcement learning:</p>
+&lt;h1 id="Reinforcement-Learning-and-Optimal-Control-for-IRRBB-Hedging-Under-Uncertainty"&gt;Reinforcement Learning and Optimal Control for IRRBB Hedging Under Uncertainty<a class="anchor-link" href="#Reinforcement-Learning-and-Optimal-Control-for-IRRBB-Hedging-Under-Uncertainty">¶</a>&lt;/h1&gt;&lt;p&gt;This notebook builds an example of IRRBB (NII) hedging using term structure models, statistical time series, control theory, and reinforcement learning:&lt;/p&gt;
 <ol>
 <li><strong>Yield curve data (GSW)</strong>: download + clean a panel of zero-coupon yields.</li>
 <li><strong>Term structure model</strong>:<ul>
@@ -7819,7 +7819,8 @@ a.anchor-link {
 </li>
 <li><strong>Stress testing &amp; comparison</strong>: evaluate Unhedged vs LQ vs RL across baseline and stress scenarios with tables and plots.</li>
 </ol>
-<p>The goal is  a <strong>controlled comparison</strong>: show where classical methods dominate (linear–quadratic world) and where RL becomes valuable (realistic frictions such as L1 costs).</p>
+&lt;p&gt;The goal is  a <strong>controlled comparison</strong>: show where classical methods dominate (linear–quadratic world) and where RL becomes valuable (realistic frictions such as L1 costs).&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -7830,8 +7831,8 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1)-Yield-curve-dataset-(GSW)-and-preprocessing">1) Yield curve dataset (GSW) and preprocessing<a class="anchor-link" href="#1)-Yield-curve-dataset-(GSW)-and-preprocessing">¶</a></h2><p>We use the Gurkaynak–Sack–Wright (GSW) U.S. Treasury <strong>zero-coupon</strong> curve because it is a clean, widely used academic dataset with a long history and many maturities. We use monthly frequency for this exercise.</p>
-<p>In the next cells we:</p>
+&lt;h2 id="1)-Yield-curve-dataset-(GSW)-and-preprocessing"&gt;1) Yield curve dataset (GSW) and preprocessing<a class="anchor-link" href="#1)-Yield-curve-dataset-(GSW)-and-preprocessing">¶</a>&lt;/h2&gt;&lt;p&gt;We use the Gurkaynak–Sack–Wright (GSW) U.S. Treasury <strong>zero-coupon</strong> curve because it is a clean, widely used academic dataset with a long history and many maturities. We use monthly frequency for this exercise.&lt;/p&gt;
+&lt;p&gt;In the next cells we:&lt;/p&gt;
 <ul>
 <li>download (or load cached) GSW yields,</li>
 <li>convert columns/maturities,</li>
@@ -7947,7 +7948,7 @@ Raw shape: (16853, 100)
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -7959,38 +7960,48 @@ Raw shape: (16853, 100)
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>Date</th>
-<th>BETA0</th>
-<th>BETA1</th>
-<th>BETA2</th>
-<th>BETA3</th>
-<th>SVEN1F01</th>
-<th>SVEN1F04</th>
-<th>SVEN1F09</th>
-<th>SVENF01</th>
-<th>SVENF02</th>
-<th>...</th>
-<th>SVENY23</th>
-<th>SVENY24</th>
-<th>SVENY25</th>
-<th>SVENY26</th>
-<th>SVENY27</th>
-<th>SVENY28</th>
-<th>SVENY29</th>
-<th>SVENY30</th>
-<th>TAU1</th>
-<th>TAU2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>1961-06-14</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;Date&lt;/th&gt;
+      &lt;th&gt;BETA0&lt;/th&gt;
+      &lt;th&gt;BETA1&lt;/th&gt;
+      &lt;th&gt;BETA2&lt;/th&gt;
+      &lt;th&gt;BETA3&lt;/th&gt;
+      &lt;th&gt;SVEN1F01&lt;/th&gt;
+      &lt;th&gt;SVEN1F04&lt;/th&gt;
+      &lt;th&gt;SVEN1F09&lt;/th&gt;
+      &lt;th&gt;SVENF01&lt;/th&gt;
+      &lt;th&gt;SVENF02&lt;/th&gt;
+      &lt;th&gt;...&lt;/th&gt;
+      &lt;th&gt;SVENY23&lt;/th&gt;
+      &lt;th&gt;SVENY24&lt;/th&gt;
+      &lt;th&gt;SVENY25&lt;/th&gt;
+      &lt;th&gt;SVENY26&lt;/th&gt;
+      &lt;th&gt;SVENY27&lt;/th&gt;
+      &lt;th&gt;SVENY28&lt;/th&gt;
+      &lt;th&gt;SVENY29&lt;/th&gt;
+      &lt;th&gt;SVENY30&lt;/th&gt;
+      &lt;th&gt;TAU1&lt;/th&gt;
+      &lt;th&gt;TAU2&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th&gt;0&lt;/th&gt;
+      
+      &lt;th&gt;1&lt;/th&gt;
+      
+      &lt;th&gt;2&lt;/th&gt;
+      
+      &lt;th&gt;3&lt;/th&gt;
+      
+      &lt;th&gt;4&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr><tr><td>1961-06-14</td>
 <td>3.917606</td>
 <td>-1.277955</td>
 <td>-1.949397</td>
@@ -8012,9 +8023,7 @@ Raw shape: (16853, 100)
 <td>0.339218</td>
 <td>-999.99</td>
 </tr>
-<tr>
-<th>1</th>
-<td>1961-06-15</td>
+<tr><td>1961-06-15</td>
 <td>3.978498</td>
 <td>-1.257404</td>
 <td>-2.247617</td>
@@ -8036,9 +8045,7 @@ Raw shape: (16853, 100)
 <td>0.325775</td>
 <td>-999.99</td>
 </tr>
-<tr>
-<th>2</th>
-<td>1961-06-16</td>
+<tr><td>1961-06-16</td>
 <td>3.984350</td>
 <td>-1.429538</td>
 <td>-1.885024</td>
@@ -8060,9 +8067,7 @@ Raw shape: (16853, 100)
 <td>0.348817</td>
 <td>-999.99</td>
 </tr>
-<tr>
-<th>3</th>
-<td>1961-06-19</td>
+<tr><td>1961-06-19</td>
 <td>4.004379</td>
 <td>-0.723311</td>
 <td>-3.310743</td>
@@ -8084,9 +8089,7 @@ Raw shape: (16853, 100)
 <td>0.282087</td>
 <td>-999.99</td>
 </tr>
-<tr>
-<th>4</th>
-<td>1961-06-20</td>
+<tr><td>1961-06-20</td>
 <td>3.985789</td>
 <td>-0.900432</td>
 <td>-2.844809</td>
@@ -8107,10 +8110,8 @@ Raw shape: (16853, 100)
 <td>NaN</td>
 <td>0.310316</td>
 <td>-999.99</td>
-</tr>
-</tbody>
-</table>
-<p>5 rows × 100 columns</p>
+</tr>&lt;/tbody&gt;</table>
+&lt;p&gt;5 rows × 100 columns&lt;/p&gt;
 </div>
 </div>
 </div>
@@ -8220,7 +8221,7 @@ Zero-coupon daily data (raw units):
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -8232,62 +8233,72 @@ Zero-coupon daily data (raw units):
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>SVENY01</th>
-<th>SVENY02</th>
-<th>SVENY03</th>
-<th>SVENY04</th>
-<th>SVENY05</th>
-<th>SVENY06</th>
-<th>SVENY07</th>
-<th>SVENY08</th>
-<th>SVENY09</th>
-<th>SVENY10</th>
-<th>...</th>
-<th>SVENY21</th>
-<th>SVENY22</th>
-<th>SVENY23</th>
-<th>SVENY24</th>
-<th>SVENY25</th>
-<th>SVENY26</th>
-<th>SVENY27</th>
-<th>SVENY28</th>
-<th>SVENY29</th>
-<th>SVENY30</th>
-</tr>
-<tr>
-<th>date</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>1961-06-14</th>
-<td>2.9825</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;SVENY01&lt;/th&gt;
+      &lt;th&gt;SVENY02&lt;/th&gt;
+      &lt;th&gt;SVENY03&lt;/th&gt;
+      &lt;th&gt;SVENY04&lt;/th&gt;
+      &lt;th&gt;SVENY05&lt;/th&gt;
+      &lt;th&gt;SVENY06&lt;/th&gt;
+      &lt;th&gt;SVENY07&lt;/th&gt;
+      &lt;th&gt;SVENY08&lt;/th&gt;
+      &lt;th&gt;SVENY09&lt;/th&gt;
+      &lt;th&gt;SVENY10&lt;/th&gt;
+      &lt;th&gt;...&lt;/th&gt;
+      &lt;th&gt;SVENY21&lt;/th&gt;
+      &lt;th&gt;SVENY22&lt;/th&gt;
+      &lt;th&gt;SVENY23&lt;/th&gt;
+      &lt;th&gt;SVENY24&lt;/th&gt;
+      &lt;th&gt;SVENY25&lt;/th&gt;
+      &lt;th&gt;SVENY26&lt;/th&gt;
+      &lt;th&gt;SVENY27&lt;/th&gt;
+      &lt;th&gt;SVENY28&lt;/th&gt;
+      &lt;th&gt;SVENY29&lt;/th&gt;
+      &lt;th&gt;SVENY30&lt;/th&gt;
+    
+      &lt;th&gt;date&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th&gt;1961-06-14&lt;/th&gt;
+      
+      &lt;th&gt;1961-06-15&lt;/th&gt;
+      
+      &lt;th&gt;1961-06-16&lt;/th&gt;
+      
+      &lt;th&gt;1961-06-19&lt;/th&gt;
+      
+      &lt;th&gt;1961-06-20&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr>
+<tr></tr><tr><td>2.9825</td>
 <td>3.3771</td>
 <td>3.5530</td>
 <td>3.6439</td>
@@ -8309,9 +8320,7 @@ Zero-coupon daily data (raw units):
 <td>NaN</td>
 <td>NaN</td>
 </tr>
-<tr>
-<th>1961-06-15</th>
-<td>2.9941</td>
+<tr><td>2.9941</td>
 <td>3.4137</td>
 <td>3.5981</td>
 <td>3.6930</td>
@@ -8333,9 +8342,7 @@ Zero-coupon daily data (raw units):
 <td>NaN</td>
 <td>NaN</td>
 </tr>
-<tr>
-<th>1961-06-16</th>
-<td>3.0012</td>
+<tr><td>3.0012</td>
 <td>3.4142</td>
 <td>3.5994</td>
 <td>3.6953</td>
@@ -8357,9 +8364,7 @@ Zero-coupon daily data (raw units):
 <td>NaN</td>
 <td>NaN</td>
 </tr>
-<tr>
-<th>1961-06-19</th>
-<td>2.9949</td>
+<tr><td>2.9949</td>
 <td>3.4386</td>
 <td>3.6252</td>
 <td>3.7199</td>
@@ -8381,9 +8386,7 @@ Zero-coupon daily data (raw units):
 <td>NaN</td>
 <td>NaN</td>
 </tr>
-<tr>
-<th>1961-06-20</th>
-<td>2.9833</td>
+<tr><td>2.9833</td>
 <td>3.4101</td>
 <td>3.5986</td>
 <td>3.6952</td>
@@ -8404,10 +8407,8 @@ Zero-coupon daily data (raw units):
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
-</tr>
-</tbody>
-</table>
-<p>5 rows × 30 columns</p>
+</tr>&lt;/tbody&gt;</table>
+&lt;p&gt;5 rows × 30 columns&lt;/p&gt;
 </div>
 </div>
 </div>
@@ -8467,7 +8468,7 @@ Zero-coupon daily data (raw units):
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -8479,62 +8480,72 @@ Zero-coupon daily data (raw units):
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>1.0</th>
-<th>2.0</th>
-<th>3.0</th>
-<th>4.0</th>
-<th>5.0</th>
-<th>6.0</th>
-<th>7.0</th>
-<th>8.0</th>
-<th>9.0</th>
-<th>10.0</th>
-<th>...</th>
-<th>21.0</th>
-<th>22.0</th>
-<th>23.0</th>
-<th>24.0</th>
-<th>25.0</th>
-<th>26.0</th>
-<th>27.0</th>
-<th>28.0</th>
-<th>29.0</th>
-<th>30.0</th>
-</tr>
-<tr>
-<th>date</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>1961-06-14</th>
-<td>0.029825</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;1.0&lt;/th&gt;
+      &lt;th&gt;2.0&lt;/th&gt;
+      &lt;th&gt;3.0&lt;/th&gt;
+      &lt;th&gt;4.0&lt;/th&gt;
+      &lt;th&gt;5.0&lt;/th&gt;
+      &lt;th&gt;6.0&lt;/th&gt;
+      &lt;th&gt;7.0&lt;/th&gt;
+      &lt;th&gt;8.0&lt;/th&gt;
+      &lt;th&gt;9.0&lt;/th&gt;
+      &lt;th&gt;10.0&lt;/th&gt;
+      &lt;th&gt;...&lt;/th&gt;
+      &lt;th&gt;21.0&lt;/th&gt;
+      &lt;th&gt;22.0&lt;/th&gt;
+      &lt;th&gt;23.0&lt;/th&gt;
+      &lt;th&gt;24.0&lt;/th&gt;
+      &lt;th&gt;25.0&lt;/th&gt;
+      &lt;th&gt;26.0&lt;/th&gt;
+      &lt;th&gt;27.0&lt;/th&gt;
+      &lt;th&gt;28.0&lt;/th&gt;
+      &lt;th&gt;29.0&lt;/th&gt;
+      &lt;th&gt;30.0&lt;/th&gt;
+    
+      &lt;th&gt;date&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th&gt;1961-06-14&lt;/th&gt;
+      
+      &lt;th&gt;1961-06-15&lt;/th&gt;
+      
+      &lt;th&gt;1961-06-16&lt;/th&gt;
+      
+      &lt;th&gt;1961-06-19&lt;/th&gt;
+      
+      &lt;th&gt;1961-06-20&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr>
+<tr></tr><tr><td>0.029825</td>
 <td>0.033771</td>
 <td>0.035530</td>
 <td>0.036439</td>
@@ -8556,9 +8567,7 @@ Zero-coupon daily data (raw units):
 <td>NaN</td>
 <td>NaN</td>
 </tr>
-<tr>
-<th>1961-06-15</th>
-<td>0.029941</td>
+<tr><td>0.029941</td>
 <td>0.034137</td>
 <td>0.035981</td>
 <td>0.036930</td>
@@ -8580,9 +8589,7 @@ Zero-coupon daily data (raw units):
 <td>NaN</td>
 <td>NaN</td>
 </tr>
-<tr>
-<th>1961-06-16</th>
-<td>0.030012</td>
+<tr><td>0.030012</td>
 <td>0.034142</td>
 <td>0.035994</td>
 <td>0.036953</td>
@@ -8604,9 +8611,7 @@ Zero-coupon daily data (raw units):
 <td>NaN</td>
 <td>NaN</td>
 </tr>
-<tr>
-<th>1961-06-19</th>
-<td>0.029949</td>
+<tr><td>0.029949</td>
 <td>0.034386</td>
 <td>0.036252</td>
 <td>0.037199</td>
@@ -8628,9 +8633,7 @@ Zero-coupon daily data (raw units):
 <td>NaN</td>
 <td>NaN</td>
 </tr>
-<tr>
-<th>1961-06-20</th>
-<td>0.029833</td>
+<tr><td>0.029833</td>
 <td>0.034101</td>
 <td>0.035986</td>
 <td>0.036952</td>
@@ -8651,10 +8654,8 @@ Zero-coupon daily data (raw units):
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
-</tr>
-</tbody>
-</table>
-<p>5 rows × 30 columns</p>
+</tr>&lt;/tbody&gt;</table>
+&lt;p&gt;5 rows × 30 columns&lt;/p&gt;
 </div>
 </div>
 </div>
@@ -8713,7 +8714,7 @@ Zero-coupon daily data (raw units):
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -8725,62 +8726,72 @@ Zero-coupon daily data (raw units):
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>1.0</th>
-<th>2.0</th>
-<th>3.0</th>
-<th>4.0</th>
-<th>5.0</th>
-<th>6.0</th>
-<th>7.0</th>
-<th>8.0</th>
-<th>9.0</th>
-<th>10.0</th>
-<th>...</th>
-<th>21.0</th>
-<th>22.0</th>
-<th>23.0</th>
-<th>24.0</th>
-<th>25.0</th>
-<th>26.0</th>
-<th>27.0</th>
-<th>28.0</th>
-<th>29.0</th>
-<th>30.0</th>
-</tr>
-<tr>
-<th>date</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>1961-06-30</th>
-<td>0.029011</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;1.0&lt;/th&gt;
+      &lt;th&gt;2.0&lt;/th&gt;
+      &lt;th&gt;3.0&lt;/th&gt;
+      &lt;th&gt;4.0&lt;/th&gt;
+      &lt;th&gt;5.0&lt;/th&gt;
+      &lt;th&gt;6.0&lt;/th&gt;
+      &lt;th&gt;7.0&lt;/th&gt;
+      &lt;th&gt;8.0&lt;/th&gt;
+      &lt;th&gt;9.0&lt;/th&gt;
+      &lt;th&gt;10.0&lt;/th&gt;
+      &lt;th&gt;...&lt;/th&gt;
+      &lt;th&gt;21.0&lt;/th&gt;
+      &lt;th&gt;22.0&lt;/th&gt;
+      &lt;th&gt;23.0&lt;/th&gt;
+      &lt;th&gt;24.0&lt;/th&gt;
+      &lt;th&gt;25.0&lt;/th&gt;
+      &lt;th&gt;26.0&lt;/th&gt;
+      &lt;th&gt;27.0&lt;/th&gt;
+      &lt;th&gt;28.0&lt;/th&gt;
+      &lt;th&gt;29.0&lt;/th&gt;
+      &lt;th&gt;30.0&lt;/th&gt;
+    
+      &lt;th&gt;date&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th&gt;1961-06-30&lt;/th&gt;
+      
+      &lt;th&gt;1961-07-31&lt;/th&gt;
+      
+      &lt;th&gt;1961-08-31&lt;/th&gt;
+      
+      &lt;th&gt;1961-09-30&lt;/th&gt;
+      
+      &lt;th&gt;1961-10-31&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr>
+<tr></tr><tr><td>0.029011</td>
 <td>0.032795</td>
 <td>0.035036</td>
 <td>0.036316</td>
@@ -8802,9 +8813,7 @@ Zero-coupon daily data (raw units):
 <td>NaN</td>
 <td>NaN</td>
 </tr>
-<tr>
-<th>1961-07-31</th>
-<td>0.027780</td>
+<tr><td>0.027780</td>
 <td>0.032304</td>
 <td>0.035068</td>
 <td>0.036787</td>
@@ -8826,9 +8835,7 @@ Zero-coupon daily data (raw units):
 <td>NaN</td>
 <td>NaN</td>
 </tr>
-<tr>
-<th>1961-08-31</th>
-<td>0.029863</td>
+<tr><td>0.029863</td>
 <td>0.033990</td>
 <td>0.036481</td>
 <td>0.037919</td>
@@ -8850,9 +8857,7 @@ Zero-coupon daily data (raw units):
 <td>NaN</td>
 <td>NaN</td>
 </tr>
-<tr>
-<th>1961-09-30</th>
-<td>0.029358</td>
+<tr><td>0.029358</td>
 <td>0.033250</td>
 <td>0.035412</td>
 <td>0.036661</td>
@@ -8874,9 +8879,7 @@ Zero-coupon daily data (raw units):
 <td>NaN</td>
 <td>NaN</td>
 </tr>
-<tr>
-<th>1961-10-31</th>
-<td>0.028936</td>
+<tr><td>0.028936</td>
 <td>0.032396</td>
 <td>0.034616</td>
 <td>0.036087</td>
@@ -8897,10 +8900,8 @@ Zero-coupon daily data (raw units):
 <td>NaN</td>
 <td>NaN</td>
 <td>NaN</td>
-</tr>
-</tbody>
-</table>
-<p>5 rows × 30 columns</p>
+</tr>&lt;/tbody&gt;</table>
+&lt;p&gt;5 rows × 30 columns&lt;/p&gt;
 </div>
 </div>
 </div>
@@ -8977,23 +8978,22 @@ Zero-coupon daily data (raw units):
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="2)-DNS-(Diebold%E2%80%93Li)-factor-model:-cross-sectional-OLS">2) DNS (Diebold–Li) factor model: cross-sectional OLS<a class="anchor-link" href="#2)-DNS-(Diebold%E2%80%93Li)-factor-model:-cross-sectional-OLS">¶</a></h2><p>We start with the standard dynamic Nelson–Siegel representation of the yield curve as a function of time to maturity $\tau$:</p>
-<p>$
-y_t(\tau) = \beta_{1,t}</p>
-<ul>
-<li>\beta_{2,t}\left(\frac{1-e^{-\lambda \tau}}{\lambda \tau}\right)</li>
-<li>\beta_{3,t}\left(\frac{1-e^{-\lambda \tau}}{\lambda \tau}-e^{-\lambda \tau}\right)</li>
-<li>\varepsilon_{t}
-$</li>
-</ul>
-<p>Parameters:</p>
+&lt;h2 id="2)-DNS-(Diebold%E2%80%93Li)-factor-model:-cross-sectional-OLS"&gt;2) DNS (Diebold–Li) factor model: cross-sectional OLS<a class="anchor-link" href="#2)-DNS-(Diebold%E2%80%93Li)-factor-model:-cross-sectional-OLS">¶</a>&lt;/h2&gt;&lt;p&gt;We start with the standard dynamic Nelson–Siegel representation of the yield curve as a function of time to maturity $\tau$:&lt;/p&gt;
+&lt;p&gt;$$
+y_t(\tau) = \beta_{1,t} 
++ \beta_{2,t}\left(\frac{1-e^{-\lambda \tau}}{\lambda \tau}\right)
++ \beta_{3,t}\left(\frac{1-e^{-\lambda \tau}}{\lambda \tau}-e^{-\lambda \tau}\right)
++ \varepsilon_{t}
+$$&lt;/p&gt;
+&lt;p&gt;Parameters:&lt;/p&gt;
 <ul>
 <li>$\beta_{1,t}$: <strong>level</strong></li>
 <li>$\beta_{2,t}$: <strong>slope</strong></li>
 <li>$\beta_{3,t}$: <strong>curvature</strong></li>
 <li>$\lambda$: controls the maturity where curvature loads most strongly</li>
 </ul>
-<p>At each date $t$, the factors can be estimated by OLS across maturities. This gives a fast, transparent baseline estimate of the latent curve factors.</p>
+&lt;p&gt;At each date $t$, the factors can be estimated by OLS across maturities. This gives a fast, transparent baseline estimate of the latent curve factors.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -9049,7 +9049,7 @@ $</li>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -9061,62 +9061,72 @@ $</li>
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>1.0</th>
-<th>2.0</th>
-<th>3.0</th>
-<th>4.0</th>
-<th>5.0</th>
-<th>6.0</th>
-<th>7.0</th>
-<th>8.0</th>
-<th>9.0</th>
-<th>10.0</th>
-<th>...</th>
-<th>21.0</th>
-<th>22.0</th>
-<th>23.0</th>
-<th>24.0</th>
-<th>25.0</th>
-<th>26.0</th>
-<th>27.0</th>
-<th>28.0</th>
-<th>29.0</th>
-<th>30.0</th>
-</tr>
-<tr>
-<th>date</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>1990-01-31</th>
-<td>0.080998</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;1.0&lt;/th&gt;
+      &lt;th&gt;2.0&lt;/th&gt;
+      &lt;th&gt;3.0&lt;/th&gt;
+      &lt;th&gt;4.0&lt;/th&gt;
+      &lt;th&gt;5.0&lt;/th&gt;
+      &lt;th&gt;6.0&lt;/th&gt;
+      &lt;th&gt;7.0&lt;/th&gt;
+      &lt;th&gt;8.0&lt;/th&gt;
+      &lt;th&gt;9.0&lt;/th&gt;
+      &lt;th&gt;10.0&lt;/th&gt;
+      &lt;th&gt;...&lt;/th&gt;
+      &lt;th&gt;21.0&lt;/th&gt;
+      &lt;th&gt;22.0&lt;/th&gt;
+      &lt;th&gt;23.0&lt;/th&gt;
+      &lt;th&gt;24.0&lt;/th&gt;
+      &lt;th&gt;25.0&lt;/th&gt;
+      &lt;th&gt;26.0&lt;/th&gt;
+      &lt;th&gt;27.0&lt;/th&gt;
+      &lt;th&gt;28.0&lt;/th&gt;
+      &lt;th&gt;29.0&lt;/th&gt;
+      &lt;th&gt;30.0&lt;/th&gt;
+    
+      &lt;th&gt;date&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th&gt;1990-01-31&lt;/th&gt;
+      
+      &lt;th&gt;1990-02-28&lt;/th&gt;
+      
+      &lt;th&gt;1990-03-31&lt;/th&gt;
+      
+      &lt;th&gt;1990-04-30&lt;/th&gt;
+      
+      &lt;th&gt;1990-05-31&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr>
+<tr></tr><tr><td>0.080998</td>
 <td>0.081567</td>
 <td>0.082178</td>
 <td>0.082620</td>
@@ -9138,9 +9148,7 @@ $</li>
 <td>0.084002</td>
 <td>0.084010</td>
 </tr>
-<tr>
-<th>1990-02-28</th>
-<td>0.080925</td>
+<tr><td>0.080925</td>
 <td>0.082517</td>
 <td>0.083358</td>
 <td>0.083810</td>
@@ -9162,9 +9170,7 @@ $</li>
 <td>0.084977</td>
 <td>0.084984</td>
 </tr>
-<tr>
-<th>1990-03-31</th>
-<td>0.083192</td>
+<tr><td>0.083192</td>
 <td>0.084778</td>
 <td>0.085420</td>
 <td>0.085639</td>
@@ -9186,9 +9192,7 @@ $</li>
 <td>0.085553</td>
 <td>0.085551</td>
 </tr>
-<tr>
-<th>1990-04-30</th>
-<td>0.085684</td>
+<tr><td>0.085684</td>
 <td>0.087799</td>
 <td>0.088629</td>
 <td>0.088956</td>
@@ -9210,9 +9214,7 @@ $</li>
 <td>0.089296</td>
 <td>0.089297</td>
 </tr>
-<tr>
-<th>1990-05-31</th>
-<td>0.081363</td>
+<tr><td>0.081363</td>
 <td>0.083009</td>
 <td>0.084012</td>
 <td>0.084568</td>
@@ -9233,10 +9235,8 @@ $</li>
 <td>0.085096</td>
 <td>0.085092</td>
 <td>0.085088</td>
-</tr>
-</tbody>
-</table>
-<p>5 rows × 30 columns</p>
+</tr>&lt;/tbody&gt;</table>
+&lt;p&gt;5 rows × 30 columns&lt;/p&gt;
 </div>
 </div>
 </div>
@@ -9351,29 +9351,30 @@ $</li>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="3)-Time-series-dynamics-for-the-factors">3) Time-series dynamics for the factors<a class="anchor-link" href="#3)-Time-series-dynamics-for-the-factors">¶</a></h2><p>In generic fashion, a state-space model consists of two equations:</p>
-<h3 id="State-(Transition)-Equation">State (Transition) Equation<a class="anchor-link" href="#State-(Transition)-Equation">¶</a></h3><p>$
+&lt;h2 id="3)-Time-series-dynamics-for-the-factors"&gt;3) Time-series dynamics for the factors<a class="anchor-link" href="#3)-Time-series-dynamics-for-the-factors">¶</a>&lt;/h2&gt;&lt;p&gt;In generic fashion, a state-space model consists of two equations:&lt;/p&gt;
+&lt;h3 id="State-(Transition)-Equation"&gt;State (Transition) Equation<a class="anchor-link" href="#State-(Transition)-Equation">¶</a>&lt;/h3&gt;&lt;p&gt;$$
 \mathbf{x}_{t+1} = f(\mathbf{x}_t) + \boldsymbol{\varepsilon}_{t+1},
 \qquad
 \boldsymbol{\varepsilon}_{t+1} \sim \mathcal{N}(0, Q)
-$</p>
-<h3 id="Measurement-(Observation)-Equation">Measurement (Observation) Equation<a class="anchor-link" href="#Measurement-(Observation)-Equation">¶</a></h3><p>$
+$$&lt;/p&gt;
+&lt;h3 id="Measurement-(Observation)-Equation"&gt;Measurement (Observation) Equation<a class="anchor-link" href="#Measurement-(Observation)-Equation">¶</a>&lt;/h3&gt;&lt;p&gt;$$
 \mathbf{y}_t = g(\mathbf{x}_t) + \boldsymbol{\eta}_t,
 \qquad
 \boldsymbol{\eta}_t \sim \mathcal{N}(0, R)
-$</p>
-<p>To move from “static cross-sectional fits” to a full state-space model, we first need a law of motion for the factors i.e. a transition equation:</p>
-<p>$
+$$&lt;/p&gt;
+&lt;p&gt;To move from “static cross-sectional fits” to a full state-space model, we first need a law of motion for the factors i.e. a transition equation:&lt;/p&gt;
+&lt;p&gt;$$
 B_{t+1} = A B_{t} (\tau) + \eta_t, \quad \eta_t \sim \mathcal{N}(0, Q),
-$</p>
-<p>where $B_t = [l_t, s_t, c_t] = [\beta_{1,t}, \beta_{2,t}, \beta_{3,t}]$ correspond to our DNS factors (level, slope and curvature).</p>
-<p>A VAR(1) is a natural first choice for the dynamics:</p>
+$$&lt;/p&gt;
+&lt;p&gt;where $B_t = [l_t, s_t, c_t] = [\beta_{1,t}, \beta_{2,t}, \beta_{3,t}]$ correspond to our DNS factors (level, slope and curvature).&lt;/p&gt;
+&lt;p&gt;A VAR(1) is a natural first choice for the dynamics:&lt;/p&gt;
 <ul>
 <li>flexible enough to capture persistence and cross-factor interactions,</li>
 <li>still linear-Gaussian (useful for Kalman filtering),</li>
 <li>aligns with a control-theory / LQ framework later.</li>
 </ul>
-<p>The fitted VAR parameters $(A, Q)$ become the <strong>state transition</strong> in the Kalman filter. We use the VAR module from the statmodels library.</p>
+&lt;p&gt;The fitted VAR parameters $(A, Q)$ become the <strong>state transition</strong> in the Kalman filter. We use the VAR module from the statmodels library.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -9436,18 +9437,19 @@ curvature -0.000251  0.000233   0.000525
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="4)-Measurement-equation-and-residual-covariance">4) Measurement equation and residual covariance<a class="anchor-link" href="#4)-Measurement-equation-and-residual-covariance">¶</a></h2><p>In the measurement equation, yields are linear in the factors (given $\lambda$):</p>
-<p>$
+&lt;h2 id="4)-Measurement-equation-and-residual-covariance"&gt;4) Measurement equation and residual covariance<a class="anchor-link" href="#4)-Measurement-equation-and-residual-covariance">¶</a>&lt;/h2&gt;&lt;p&gt;In the measurement equation, yields are linear in the factors (given $\lambda$):&lt;/p&gt;
+&lt;p&gt;$$
 Y_t = y_t (\tau) = H(\lambda, \tau) B_t + \varepsilon_t,\quad \varepsilon_t \sim \mathcal{N}(0, R),
-$</p>
-<p>where $H$ contains the factor loadings.</p>
-<p>Key practical step: estimate $R$ (measurement noise) using OLS residuals and ensure that:</p>
+$$&lt;/p&gt;
+&lt;p&gt;where $H$ contains the factor loadings.&lt;/p&gt;
+&lt;p&gt;Key practical step: estimate $R$ (measurement noise) using OLS residuals and ensure that:&lt;/p&gt;
 <ul>
 <li>maturities are aligned across dates,</li>
 <li>missing values are handled consistently,</li>
 <li>the clean yield matrix $Y$ and factor estimates are dimensionally compatible.</li>
 </ul>
-<p>This makes the later state-space computations robust and reproducible.</p>
+&lt;p&gt;This makes the later state-space computations robust and reproducible.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -9539,20 +9541,21 @@ Shapes: Y (433, 30) H (30, 3) R (30, 30)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="5)-Kalman-filtering-and-smoothing-(DNS)">5) Kalman filtering and smoothing (DNS)<a class="anchor-link" href="#5)-Kalman-filtering-and-smoothing-(DNS)">¶</a></h2><p>The OLS factors treat each date independently. A state-space approach instead combines:</p>
+&lt;h2 id="5)-Kalman-filtering-and-smoothing-(DNS)"&gt;5) Kalman filtering and smoothing (DNS)<a class="anchor-link" href="#5)-Kalman-filtering-and-smoothing-(DNS)">¶</a>&lt;/h2&gt;&lt;p&gt;The OLS factors treat each date independently. A state-space approach instead combines:&lt;/p&gt;
 <ul>
 <li>cross-sectional information from the yield curve at date $t$,</li>
 <li>time-series information from the factor dynamics.</li>
 </ul>
-<p>The <strong>Kalman filter</strong> is the core algorithm used to perform inference in linear Gaussian state-space models. In this project, it is used to estimate and infer the latent yield-curve factors (level, slope, curvature) from observed yields.</p>
-<p>We compute:</p>
+&lt;p&gt;The <strong>Kalman filter</strong> is the core algorithm used to perform inference in linear Gaussian state-space models. In this project, it is used to estimate and infer the latent yield-curve factors (level, slope, curvature) from observed yields.&lt;/p&gt;
+&lt;p&gt;We compute:&lt;/p&gt;
 <ul>
 <li><strong>Predicted state</strong>: $ \beta_{t|t-1} $ (before seeing yields at $t$)</li>
 <li><strong>Filtered state</strong>: $ \beta_{t|t} $ (after incorporating yields at $t$)</li>
 <li><strong>Smoothed state</strong>: $ \beta_{t|T} $ (using the full sample $1..T$)</li>
 </ul>
-<p>The Kalman framework distinguishes these three different estimates of the state.</p>
-<p>Smoothed factors are especially useful for downstream economic applications because they reduce estimation noise while staying model-consistent.</p>
+&lt;p&gt;The Kalman framework distinguishes these three different estimates of the state.&lt;/p&gt;
+&lt;p&gt;Smoothed factors are especially useful for downstream economic applications because they reduce estimation noise while staying model-consistent.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -9719,13 +9722,14 @@ R: (30, 30)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="6)-Applying-the-Kalman-filter/smoother">6) Applying the Kalman filter/smoother<a class="anchor-link" href="#6)-Applying-the-Kalman-filter/smoother">¶</a></h2><p>We initialize the state and covariance and run the filter forward and the RTS smoother backward.</p>
-<p>Two sanity checks matter here:</p>
+&lt;h2 id="6)-Applying-the-Kalman-filter/smoother"&gt;6) Applying the Kalman filter/smoother<a class="anchor-link" href="#6)-Applying-the-Kalman-filter/smoother">¶</a>&lt;/h2&gt;&lt;p&gt;We initialize the state and covariance and run the filter forward and the RTS smoother backward.&lt;/p&gt;
+&lt;p&gt;Two sanity checks matter here:&lt;/p&gt;
 <ol>
 <li><strong>Shapes</strong>: $Y$ is (T × N maturities), $H$ is (N × 3), states are (T × 3).</li>
 <li><strong>Scale</strong>: yields should be in consistent units (e.g., decimals rather than percent) throughout.</li>
 </ol>
-<p>The output is a time series of factor estimates with three versions (predicted, filtered, smoothed).</p>
+&lt;p&gt;The output is a time series of factor estimates with three versions (predicted, filtered, smoothed).&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -9799,7 +9803,7 @@ R: (30, 30)
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[22]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -9811,49 +9815,49 @@ R: (30, 30)
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>level</th>
-<th>slope</th>
-<th>curvature</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>1990-01-31</th>
-<td>0.078016</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;level&lt;/th&gt;
+      &lt;th&gt;slope&lt;/th&gt;
+      &lt;th&gt;curvature&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th&gt;1990-01-31&lt;/th&gt;
+      
+      &lt;th&gt;1990-02-28&lt;/th&gt;
+      
+      &lt;th&gt;1990-03-31&lt;/th&gt;
+      
+      &lt;th&gt;1990-04-30&lt;/th&gt;
+      
+      &lt;th&gt;1990-05-31&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr><tr><td>0.078016</td>
 <td>0.003215</td>
 <td>0.014766</td>
 </tr>
-<tr>
-<th>1990-02-28</th>
-<td>0.075872</td>
+<tr><td>0.075872</td>
 <td>0.006037</td>
 <td>0.020238</td>
 </tr>
-<tr>
-<th>1990-03-31</th>
-<td>0.079267</td>
+<tr><td>0.079267</td>
 <td>0.005030</td>
 <td>0.012670</td>
 </tr>
-<tr>
-<th>1990-04-30</th>
-<td>0.077276</td>
+<tr><td>0.077276</td>
 <td>0.009562</td>
 <td>0.023612</td>
 </tr>
-<tr>
-<th>1990-05-31</th>
-<td>0.072786</td>
+<tr><td>0.072786</td>
 <td>0.009663</td>
 <td>0.024977</td>
-</tr>
-</tbody>
-</table>
+</tr>&lt;/tbody&gt;</table>
 </div>
 </div>
 </div>
@@ -9866,19 +9870,20 @@ R: (30, 30)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="7)-OLS-vs-Kalman-factors-(what-should-we-expect?)">7) OLS vs Kalman factors (what should we expect?)<a class="anchor-link" href="#7)-OLS-vs-Kalman-factors-(what-should-we-expect?)">¶</a></h2><p>OLS and Kalman-smoothed factors can look very close in benign settings because:</p>
+&lt;h2 id="7)-OLS-vs-Kalman-factors-(what-should-we-expect?)"&gt;7) OLS vs Kalman factors (what should we expect?)<a class="anchor-link" href="#7)-OLS-vs-Kalman-factors-(what-should-we-expect?)">¶</a>&lt;/h2&gt;&lt;p&gt;OLS and Kalman-smoothed factors can look very close in benign settings because:&lt;/p&gt;
 <ul>
 <li>the Nelson–Siegel cross-section is already very informative,</li>
 <li>the VAR dynamics mostly provide gentle time-series regularization.</li>
 </ul>
-<p>The real value of state-space estimation shows up when:</p>
+&lt;p&gt;The real value of state-space estimation shows up when:&lt;/p&gt;
 <ul>
 <li>measurement noise is material,</li>
 <li>missing observations occur,</li>
 <li>we extend the model (e.g., AFNS adjustment),</li>
 <li>we need probabilistic filtering objects (pred/filtered/smoothed) for decision-making.</li>
 </ul>
-<p>This is a necessary stepping stone to AFNS and to dynamic hedging.</p>
+&lt;p&gt;This is a necessary stepping stone to AFNS and to dynamic hedging.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -9949,13 +9954,14 @@ R: (30, 30)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="8)-Fully-latent-state-space-estimation-via-MLE">8) Fully latent state-space estimation via MLE<a class="anchor-link" href="#8)-Fully-latent-state-space-estimation-via-MLE">¶</a></h2><p>Instead of treating OLS + VAR as “two-step”, we can estimate a coherent state-space model by maximum likelihood:</p>
+&lt;h2 id="8)-Fully-latent-state-space-estimation-via-MLE"&gt;8) Fully latent state-space estimation via MLE<a class="anchor-link" href="#8)-Fully-latent-state-space-estimation-via-MLE">¶</a>&lt;/h2&gt;&lt;p&gt;Instead of treating OLS + VAR as “two-step”, we can estimate a coherent state-space model by maximum likelihood:&lt;/p&gt;
 <ul>
 <li>Transition parameters: $A, Q$</li>
 <li>Measurement parameters: $R$ (and potentially $\lambda$ in some variants)</li>
 </ul>
-<p>This step is closer to how term structure models are often estimated in practice: choose parameters to maximize the likelihood implied by the Kalman filter.</p>
-<p>We start with sensible initial values and then optimize the negative log-likelihood.</p>
+&lt;p&gt;This step is closer to how term structure models are often estimated in practice: choose parameters to maximize the likelihood implied by the Kalman filter.&lt;/p&gt;
+&lt;p&gt;We start with sensible initial values and then optimize the negative log-likelihood.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -10127,14 +10133,15 @@ R: (30, 30)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="9)-Initialization-choices-for-MLE">9) Initialization choices for MLE<a class="anchor-link" href="#9)-Initialization-choices-for-MLE">¶</a></h2><p>State-space likelihood optimization is sensitive to starting points.</p>
-<p>We use:</p>
+&lt;h2 id="9)-Initialization-choices-for-MLE"&gt;9) Initialization choices for MLE<a class="anchor-link" href="#9)-Initialization-choices-for-MLE">¶</a>&lt;/h2&gt;&lt;p&gt;State-space likelihood optimization is sensitive to starting points.&lt;/p&gt;
+&lt;p&gt;We use:&lt;/p&gt;
 <ul>
 <li>a stable initial $A$ (eigenvalues inside the unit circle),</li>
 <li>small but non-zero $Q$ to allow realistic factor innovations,</li>
 <li>diagonal $R$ as a parsimonious first approximation to measurement noise.</li>
 </ul>
-<p>The goal is not “perfect initialization”, but a starting point that avoids numerical pathologies and lets the optimizer find a plausible region of parameter space.</p>
+&lt;p&gt;The goal is not “perfect initialization”, but a starting point that avoids numerical pathologies and lets the optimizer find a plausible region of parameter space.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -10203,8 +10210,8 @@ R: (30, 30)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="10)-Maximum-likelihood-estimation">10) Maximum likelihood estimation<a class="anchor-link" href="#10)-Maximum-likelihood-estimation">¶</a></h2><p>We optimize the negative log-likelihood produced by the Kalman filter.</p>
-<p>Practical notes:</p>
+&lt;h2 id="10)-Maximum-likelihood-estimation"&gt;10) Maximum likelihood estimation<a class="anchor-link" href="#10)-Maximum-likelihood-estimation">¶</a>&lt;/h2&gt;&lt;p&gt;We optimize the negative log-likelihood produced by the Kalman filter.&lt;/p&gt;
+&lt;p&gt;Practical notes:&lt;/p&gt;
 <ul>
 <li>we typically enforce stability / positivity constraints implicitly (e.g., parameterizing variances in log-space),</li>
 <li>we monitor convergence and sanity-check parameter magnitudes,</li>
@@ -10269,13 +10276,13 @@ Final neg loglik: -62125.423142875195
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="11)-Estimated-parameters-and-interpretation">11) Estimated parameters and interpretation<a class="anchor-link" href="#11)-Estimated-parameters-and-interpretation">¶</a></h2><p>After optimization, we extract:</p>
+&lt;h2 id="11)-Estimated-parameters-and-interpretation"&gt;11) Estimated parameters and interpretation<a class="anchor-link" href="#11)-Estimated-parameters-and-interpretation">¶</a>&lt;/h2&gt;&lt;p&gt;After optimization, we extract:&lt;/p&gt;
 <ul>
 <li>$A$: persistence and cross-factor transmission</li>
 <li>$Q$: variance of factor shocks (state noise)</li>
 <li>$R$: measurement noise by maturity (observation noise)</li>
 </ul>
-<p>A useful sanity check is that:</p>
+&lt;p&gt;A useful sanity check is that:&lt;/p&gt;
 <ul>
 <li>$A$ implies persistent but stable factors,</li>
 <li>$Q$ is not degenerate (not all zeros),</li>
@@ -10307,14 +10314,15 @@ Final neg loglik: -62125.423142875195
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="12)-Smoothed-factors-under-MLE">12) Smoothed factors under MLE<a class="anchor-link" href="#12)-Smoothed-factors-under-MLE">¶</a></h2><p>With the MLE parameters fixed, we re-run the Kalman filter and smoother to produce the final factor estimates. We also estimate $\lambda$ through MLE.</p>
-<p>These smoothed factors are the state variables we will carry forward into:</p>
+&lt;h2 id="12)-Smoothed-factors-under-MLE"&gt;12) Smoothed factors under MLE<a class="anchor-link" href="#12)-Smoothed-factors-under-MLE">¶</a>&lt;/h2&gt;&lt;p&gt;With the MLE parameters fixed, we re-run the Kalman filter and smoother to produce the final factor estimates. We also estimate $\lambda$ through MLE.&lt;/p&gt;
+&lt;p&gt;These smoothed factors are the state variables we will carry forward into:&lt;/p&gt;
 <ul>
 <li>AFNS (no-arbitrage yield adjustment),</li>
 <li>balance sheet / NII simulation,</li>
 <li>control and RL environments.</li>
 </ul>
-<p>From this point, the modeling focus shifts from “fit the curve” to “use the curve as a state in a decision problem”.</p>
+&lt;p&gt;From this point, the modeling focus shifts from “fit the curve” to “use the curve as a state in a decision problem”.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -10470,160 +10478,173 @@ Best lambda: 0.09206896551724138 neg loglik: -69908.23831762242
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Part-II:-AFNS-(Arbitrage-Free-Nelson%E2%80%93Siegel)">Part II: AFNS (Arbitrage-Free Nelson–Siegel)<a class="anchor-link" href="#Part-II:-AFNS-(Arbitrage-Free-Nelson%E2%80%93Siegel)">¶</a></h1><h2 id="From-Diebold%E2%80%93Li-to-AFNS:-No-Arbitrage-Term-Structure-Modeling">From Diebold–Li to AFNS: No-Arbitrage Term Structure Modeling<a class="anchor-link" href="#From-Diebold%E2%80%93Li-to-AFNS:-No-Arbitrage-Term-Structure-Modeling">¶</a></h2><p>This project models the yield curve using the <strong>Arbitrage-Free Nelson–Siegel (AFNS)</strong> framework originally introduced by Christensen, Diebold, and Rudebusch (2009). The AFNS model builds directly on the <strong>Diebold–Li dynamic Nelson–Siegel (DNS)</strong> model, enhancing it with no-arbitrage restrictions.</p>
-<hr/>
-<h2 id="The-Diebold%E2%80%93Li-(Dynamic-Nelson%E2%80%93Siegel)-Model">The Diebold–Li (Dynamic Nelson–Siegel) Model<a class="anchor-link" href="#The-Diebold%E2%80%93Li-(Dynamic-Nelson%E2%80%93Siegel)-Model">¶</a></h2><p>The Diebold–Li model represents the zero-coupon yield curve at time $t$ as a linear function of three latent factors:</p>
-<h1 id="$%0Ay_t(%5Ctau)">$
-y_t(\tau)<a class="anchor-link" href="#$%0Ay_t(%5Ctau)">¶</a></h1><h2 id="L_t%0A+%0AS_t-%5Cfrac%7B1---e%5E%7B-%5Clambda-%5Ctau%7D%7D%7B%5Clambda-%5Ctau%7D%0A+%0AC_t-%5Cleft(%0A%5Cfrac%7B1---e%5E%7B-%5Clambda-%5Ctau%7D%7D%7B%5Clambda-%5Ctau%7D">L_t
+&lt;h1 id="Part-II:-AFNS-(Arbitrage-Free-Nelson%E2%80%93Siegel)"&gt;Part II: AFNS (Arbitrage-Free Nelson–Siegel)<a class="anchor-link" href="#Part-II:-AFNS-(Arbitrage-Free-Nelson%E2%80%93Siegel)">¶</a>&lt;/h1&gt;&lt;h2 id="From-Diebold%E2%80%93Li-to-AFNS:-No-Arbitrage-Term-Structure-Modeling"&gt;From Diebold–Li to AFNS: No-Arbitrage Term Structure Modeling<a class="anchor-link" href="#From-Diebold%E2%80%93Li-to-AFNS:-No-Arbitrage-Term-Structure-Modeling">¶</a>&lt;/h2&gt;&lt;p&gt;This project models the yield curve using the <strong>Arbitrage-Free Nelson–Siegel (AFNS)</strong> framework originally introduced by Christensen, Diebold, and Rudebusch (2009). The AFNS model builds directly on the <strong>Diebold–Li dynamic Nelson–Siegel (DNS)</strong> model, enhancing it with no-arbitrage restrictions.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="The-Diebold%E2%80%93Li-(Dynamic-Nelson%E2%80%93Siegel)-Model"&gt;The Diebold–Li (Dynamic Nelson–Siegel) Model<a class="anchor-link" href="#The-Diebold%E2%80%93Li-(Dynamic-Nelson%E2%80%93Siegel)-Model">¶</a>&lt;/h2&gt;&lt;p&gt;The Diebold–Li model represents the zero-coupon yield curve at time $t$ as a linear function of three latent factors:&lt;/p&gt;
+&lt;p&gt;$$
+y_t(\tau)
+=
+L_t
 +
 S_t \frac{1 - e^{-\lambda \tau}}{\lambda \tau}
 +
 C_t \left(
-\frac{1 - e^{-\lambda \tau}}{\lambda \tau}<a class="anchor-link" href="#L_t%0A+%0AS_t-%5Cfrac%7B1---e%5E%7B-%5Clambda-%5Ctau%7D%7D%7B%5Clambda-%5Ctau%7D%0A+%0AC_t-%5Cleft(%0A%5Cfrac%7B1---e%5E%7B-%5Clambda-%5Ctau%7D%7D%7B%5Clambda-%5Ctau%7D">¶</a></h2><p>e^{-\lambda \tau}
+\frac{1 - e^{-\lambda \tau}}{\lambda \tau}
+-
+e^{-\lambda \tau}
 \right)
-$</p>
-<p>where:</p>
+$$&lt;/p&gt;
+&lt;p&gt;where:&lt;/p&gt;
 <ul>
 <li>$L_t$ is the <strong>level</strong> factor,</li>
 <li>$S_t$ is the <strong>slope</strong> factor,</li>
 <li>$C_t$ is the <strong>curvature</strong> factor,</li>
 <li>$\lambda$ controls factor loadings across maturities.</li>
 </ul>
-<p>The factors evolve dynamically, typically as a VAR(1):</p>
-<h1 id="$%0A%5Cmathbf%7BX%7D_%7Bt+1%7D">$
-\mathbf{X}_{t+1}<a class="anchor-link" href="#$%0A%5Cmathbf%7BX%7D_%7Bt+1%7D">¶</a></h1><p>\boldsymbol{\mu}
+&lt;p&gt;The factors evolve dynamically, typically as a VAR(1):&lt;/p&gt;
+&lt;p&gt;$$
+\mathbf{X}_{t+1}
+=
+\boldsymbol{\mu}
 +
-\Phi (\mathbf{X}<em>t - \boldsymbol{\mu})
+\Phi (\mathbf{X}_t - \boldsymbol{\mu})
 +
-\boldsymbol{\varepsilon}</em>{t+1}
-$</p>
-<p>The Diebold–Li model is:</p>
+\boldsymbol{\varepsilon}_{t+1}
+$$&lt;/p&gt;
+&lt;p&gt;The Diebold–Li model is:&lt;/p&gt;
 <ul>
 <li>parsimonious,</li>
 <li>empirically successful,</li>
 <li>and highly interpretable.</li>
 </ul>
-<p>However, it is <strong>purely statistical</strong>.</p>
-<hr/>
-<h2 id="The-Key-Limitation:-Lack-of-No-Arbitrage">The Key Limitation: Lack of No-Arbitrage<a class="anchor-link" href="#The-Key-Limitation:-Lack-of-No-Arbitrage">¶</a></h2><p>The Diebold–Li model <strong>does not impose no-arbitrage restrictions</strong>.</p>
-<p>This has important consequences:</p>
+&lt;p&gt;However, it is <strong>purely statistical</strong>.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="The-Key-Limitation:-Lack-of-No-Arbitrage"&gt;The Key Limitation: Lack of No-Arbitrage<a class="anchor-link" href="#The-Key-Limitation:-Lack-of-No-Arbitrage">¶</a>&lt;/h2&gt;&lt;p&gt;The Diebold–Li model <strong>does not impose no-arbitrage restrictions</strong>.&lt;/p&gt;
+&lt;p&gt;This has important consequences:&lt;/p&gt;
 <ul>
 <li>The model fits yields well, but</li>
 <li>It does not guarantee that yields are consistent with the existence of an underlying stochastic discount factor,</li>
 <li>It cannot be used coherently for pricing interest-rate-sensitive instruments.</li>
 </ul>
-<p>In particular, nothing in the Diebold–Li model ensures that yields at different maturities are linked through arbitrage-free pricing relations.</p>
-<p>This is acceptable for forecasting, but may pose problems for applications involving hedging, valuation, and balance-sheet risk. With the imposition of no arbitrage, we ensure consistency between forward rates and offset exposures correctly when hedging.</p>
-<hr/>
-<h2 id="Risk-Neutral-Pricing-and-No-Arbitrage">Risk-Neutral Pricing and No-Arbitrage<a class="anchor-link" href="#Risk-Neutral-Pricing-and-No-Arbitrage">¶</a></h2><p>In arbitrage-free term-structure models, bond prices are expectations under a <strong>risk-neutral probability measure</strong> $\mathbb{Q}$:</p>
-<h1 id="$%0AP_t(%5Ctau)">$
-P_t(\tau)<a class="anchor-link" href="#$%0AP_t(%5Ctau)">¶</a></h1><p>\mathbb{E}^\mathbb{Q}_t
+&lt;p&gt;In particular, nothing in the Diebold–Li model ensures that yields at different maturities are linked through arbitrage-free pricing relations.&lt;/p&gt;
+&lt;p&gt;This is acceptable for forecasting, but may pose problems for applications involving hedging, valuation, and balance-sheet risk. With the imposition of no arbitrage, we ensure consistency between forward rates and offset exposures correctly when hedging.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="Risk-Neutral-Pricing-and-No-Arbitrage"&gt;Risk-Neutral Pricing and No-Arbitrage<a class="anchor-link" href="#Risk-Neutral-Pricing-and-No-Arbitrage">¶</a>&lt;/h2&gt;&lt;p&gt;In arbitrage-free term-structure models, bond prices are expectations under a <strong>risk-neutral probability measure</strong> $\mathbb{Q}$:&lt;/p&gt;
+&lt;p&gt;$$
+P_t(\tau)
+=
+\mathbb{E}^\mathbb{Q}_t
 \left[
-\exp\left(</p>
-<ul>
-<li>\int_t^{t+\tau} r_s , ds
+\exp\left(
+- \int_t^{t+\tau} r_s \, ds
 \right)
 \right]
-$</li>
-</ul>
-<p>where:</p>
+$$&lt;/p&gt;
+&lt;p&gt;where:&lt;/p&gt;
 <ul>
 <li>$r_t$ is the instantaneous short rate,</li>
 <li>risk premia are absorbed into the change of measure from the physical $\mathbb{P}$ to the risk-neutral $\mathbb{Q}$ measure.</li>
 </ul>
-<p>In <strong>affine term-structure models</strong>, this leads to yields of the form:</p>
-<h1 id="$%0Ay_t(%5Ctau)">$
-y_t(\tau)<a class="anchor-link" href="#$%0Ay_t(%5Ctau)">¶</a></h1><p>A(\tau)
+&lt;p&gt;In <strong>affine term-structure models</strong>, this leads to yields of the form:&lt;/p&gt;
+&lt;p&gt;$$
+y_t(\tau)
+=
+A(\tau)
 +
 B(\tau)^\top \mathbf{X}_t
-$</p>
-<p>with $A(\tau)$ and $B(\tau)$ determined by:</p>
+$$&lt;/p&gt;
+&lt;p&gt;with $A(\tau)$ and $B(\tau)$ determined by:&lt;/p&gt;
 <ul>
 <li>the dynamics of $\mathbf{X}_t$ under $\mathbb{Q}$,</li>
 <li>and the specification of the short rate.</li>
 </ul>
-<p>This structure enforces <strong>internal consistency across maturities</strong>.</p>
-<hr/>
-<h2 id="The-AFNS-Model:-Making-Nelson%E2%80%93Siegel-Arbitrage-Free">The AFNS Model: Making Nelson–Siegel Arbitrage-Free<a class="anchor-link" href="#The-AFNS-Model:-Making-Nelson%E2%80%93Siegel-Arbitrage-Free">¶</a></h2><p>The AFNS model preserves the Nelson–Siegel factor structure while embedding it into an affine no-arbitrage framework.</p>
-<h3 id="Short-Rate-Specification">Short Rate Specification<a class="anchor-link" href="#Short-Rate-Specification">¶</a></h3><p>The short rate is defined as a linear function of the Nelson–Siegel factors:</p>
-<p>$
+&lt;p&gt;This structure enforces <strong>internal consistency across maturities</strong>.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="The-AFNS-Model:-Making-Nelson%E2%80%93Siegel-Arbitrage-Free"&gt;The AFNS Model: Making Nelson–Siegel Arbitrage-Free<a class="anchor-link" href="#The-AFNS-Model:-Making-Nelson%E2%80%93Siegel-Arbitrage-Free">¶</a>&lt;/h2&gt;&lt;p&gt;The AFNS model preserves the Nelson–Siegel factor structure while embedding it into an affine no-arbitrage framework.&lt;/p&gt;
+&lt;h3 id="Short-Rate-Specification"&gt;Short Rate Specification<a class="anchor-link" href="#Short-Rate-Specification">¶</a>&lt;/h3&gt;&lt;p&gt;The short rate is defined as a linear function of the Nelson–Siegel factors:&lt;/p&gt;
+&lt;p&gt;$$
 r_t = L_t + S_t
-$</p>
-<p>This choice preserves the economic interpretation of the level and slope factors.</p>
-<hr/>
-<h3 id="Risk-Neutral-Dynamics">Risk-Neutral Dynamics<a class="anchor-link" href="#Risk-Neutral-Dynamics">¶</a></h3><p>Under the risk-neutral measure $\mathbb{Q}$, the factors follow affine Gaussian dynamics:</p>
-<h1 id="$%0Ad%5Cmathbf%7BX%7D_t">$
-d\mathbf{X}_t<a class="anchor-link" href="#$%0Ad%5Cmathbf%7BX%7D_t">¶</a></h1><p>K_\mathbb{Q} (\theta_\mathbb{Q} - \mathbf{X}_t) , dt
+$$&lt;/p&gt;
+&lt;p&gt;This choice preserves the economic interpretation of the level and slope factors.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3 id="Risk-Neutral-Dynamics"&gt;Risk-Neutral Dynamics<a class="anchor-link" href="#Risk-Neutral-Dynamics">¶</a>&lt;/h3&gt;&lt;p&gt;Under the risk-neutral measure $\mathbb{Q}$, the factors follow affine Gaussian dynamics:&lt;/p&gt;
+&lt;p&gt;$$
+d\mathbf{X}_t
+=
+K_\mathbb{Q} (\theta_\mathbb{Q} - \mathbf{X}_t) \, dt
 +
-\Sigma , d\mathbf{W}^\mathbb{Q}_t
-$</p>
-<p>These continuous-time dynamics imply <strong>closed-form expressions</strong> for bond prices and yields.</p>
-<hr/>
-<h3 id="The-Yield-Adjustment-Term">The Yield Adjustment Term<a class="anchor-link" href="#The-Yield-Adjustment-Term">¶</a></h3><p>The key difference between DNS and AFNS lies in the <strong>yield adjustment term</strong>.</p>
-<h1 id="Observed-yields-satisfy:%0A$%0Ay_t(%5Ctau)">Observed yields satisfy:
-$
-y_t(\tau)<a class="anchor-link" href="#Observed-yields-satisfy:%0A$%0Ay_t(%5Ctau)">¶</a></h1><p>A(\tau)
+\Sigma \, d\mathbf{W}^\mathbb{Q}_t
+$$&lt;/p&gt;
+&lt;p&gt;These continuous-time dynamics imply <strong>closed-form expressions</strong> for bond prices and yields.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3 id="The-Yield-Adjustment-Term"&gt;The Yield Adjustment Term<a class="anchor-link" href="#The-Yield-Adjustment-Term">¶</a>&lt;/h3&gt;&lt;p&gt;The key difference between DNS and AFNS lies in the <strong>yield adjustment term</strong>.&lt;/p&gt;
+&lt;p&gt;Observed yields satisfy:
+$$
+y_t(\tau)
+=
+A(\tau)
 +
 B(\tau)^\top \mathbf{X}_t
 +
 \eta_t
-$</p>
-<p>where:</p>
+$$&lt;/p&gt;
+&lt;p&gt;where:&lt;/p&gt;
 <ul>
 <li>$B(\tau)$ has the same Nelson–Siegel loadings as in Diebold–Li,</li>
 <li>$A(\tau)$ is a maturity-dependent adjustment term.</li>
 </ul>
-<p>This adjustment term:</p>
+&lt;p&gt;This adjustment term:&lt;/p&gt;
 <ul>
 <li>depends on the factor volatilities,</li>
 <li>captures Jensen’s inequality effects from stochastic discounting,</li>
 <li>and ensures that yields satisfy no-arbitrage restrictions.</li>
 </ul>
-<p>Importantly:</p>
+&lt;p&gt;Importantly:&lt;/p&gt;
 <blockquote>
-<p><strong>AFNS does not change the factor loadings. It changes the intercept.</strong></p>
+&lt;p&gt;<strong>AFNS does not change the factor loadings. It changes the intercept.</strong>&lt;/p&gt;
 </blockquote>
-<p>This preserves interpretability while enforcing arbitrage-free pricing.</p>
-<hr/>
-<h2 id="Relationship-Between-DNS-and-AFNS">Relationship Between DNS and AFNS<a class="anchor-link" href="#Relationship-Between-DNS-and-AFNS">¶</a></h2><p>The AFNS model can be viewed as:</p>
+&lt;p&gt;This preserves interpretability while enforcing arbitrage-free pricing.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="Relationship-Between-DNS-and-AFNS"&gt;Relationship Between DNS and AFNS<a class="anchor-link" href="#Relationship-Between-DNS-and-AFNS">¶</a>&lt;/h2&gt;&lt;p&gt;The AFNS model can be viewed as:&lt;/p&gt;
 <blockquote>
-<p><strong>Diebold–Li + a model-consistent yield adjustment term</strong></p>
+&lt;p&gt;<strong>Diebold–Li + a model-consistent yield adjustment term</strong>&lt;/p&gt;
 </blockquote>
-<p>Key implications:</p>
+&lt;p&gt;Key implications:&lt;/p&gt;
 <ul>
 <li>DNS is recovered as a special case when volatilities vanish,</li>
 <li>AFNS remains empirically flexible,</li>
 <li>AFNS supports pricing, hedging, and risk-neutral valuation.</li>
 </ul>
-<p>Thus, AFNS is a <strong>structural refinement</strong>, not a competing model.</p>
-<hr/>
-<h2 id="Why-AFNS-is-important-in-this-project">Why AFNS is important in this project<a class="anchor-link" href="#Why-AFNS-is-important-in-this-project">¶</a></h2><p>This project studies:</p>
+&lt;p&gt;Thus, AFNS is a <strong>structural refinement</strong>, not a competing model.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="Why-AFNS-is-important-in-this-project"&gt;Why AFNS is important in this project<a class="anchor-link" href="#Why-AFNS-is-important-in-this-project">¶</a>&lt;/h2&gt;&lt;p&gt;This project studies:&lt;/p&gt;
 <ul>
 <li>interest-rate risk in the banking book,</li>
 <li>dynamic hedging with interest-rate derivatives,</li>
 <li>and optimal decision-making under uncertainty.</li>
 </ul>
-<p>These tasks require:</p>
+&lt;p&gt;These tasks require:&lt;/p&gt;
 <ul>
 <li>consistent pricing across maturities,</li>
 <li>coherent forward-rate dynamics,</li>
 <li>and economically meaningful hedge payoffs.</li>
 </ul>
-<p>AFNS provides:</p>
+&lt;p&gt;AFNS provides:&lt;/p&gt;
 <ul>
 <li>a no-arbitrage state-space representation of the yield curve,</li>
 <li>compatibility with Kalman filtering and smoothing,</li>
 <li>and a principled foundation for both LQ control and reinforcement learning.</li>
 </ul>
-<hr/>
-<h2 id="Conceptual-Summary">Conceptual Summary<a class="anchor-link" href="#Conceptual-Summary">¶</a></h2><ul>
+&lt;hr /&gt;
+&lt;h2 id="Conceptual-Summary"&gt;Conceptual Summary<a class="anchor-link" href="#Conceptual-Summary">¶</a>&lt;/h2&gt;<ul>
 <li>Diebold–Li offers a flexible statistical representation of the yield curve.</li>
 <li>AFNS embeds this representation into an affine no-arbitrage framework.</li>
 <li>The adjustment term $A(\tau)$ enforces pricing consistency without sacrificing interpretability.</li>
 <li>This makes AFNS the natural choice for applications that bridge <strong>econometrics</strong>, <strong>pricing</strong>, and <strong>dynamic hedging</strong>.</li>
 </ul>
-<hr/>
-<p><em>Reference: Christensen, Diebold, and Rudebusch (2009), “The Affine Arbitrage-Free Class of Nelson–Siegel Term Structure Models.”</em></p>
+&lt;hr /&gt;
+&lt;p&gt;<em>Reference: Christensen, Diebold, and Rudebusch (2009), “The Affine Arbitrage-Free Class of Nelson–Siegel Term Structure Models.”</em>&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -10634,17 +10655,18 @@ $</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="AFNS-approach-and-implementation-used-here">AFNS approach and implementation used here<a class="anchor-link" href="#AFNS-approach-and-implementation-used-here">¶</a></h2><p>We implement AFNS as an extension on top of our DNS implementation:</p>
+&lt;h2 id="AFNS-approach-and-implementation-used-here"&gt;AFNS approach and implementation used here<a class="anchor-link" href="#AFNS-approach-and-implementation-used-here">¶</a>&lt;/h2&gt;&lt;p&gt;We implement AFNS as an extension on top of our DNS implementation:&lt;/p&gt;
 <ul>
 <li>Keep factor dynamics under the physical measure $\mathbb{P}$ (estimated from data).</li>
 <li>Modify the measurement equation by adding the AFNS adjustment term.</li>
 </ul>
-<p>This is a pragmatic “best of both worlds” approach:</p>
+&lt;p&gt;This is a pragmatic “best of both worlds” approach:&lt;/p&gt;
 <ul>
 <li>retains the DNS interpretability and estimation pipeline,</li>
 <li>introduces no-arbitrage consistency in yield construction.</li>
 </ul>
-<p>Also be careful not to confuse $A$, the matrix of DNS VAR coefficients, with $A(\tau)$, the AFNS no-arbitrage adjustment term</p>
+&lt;p&gt;Also be careful not to confuse $A$, the matrix of DNS VAR coefficients, with $A(\tau)$, the AFNS no-arbitrage adjustment term&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -10851,7 +10873,7 @@ $</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[35]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -10863,36 +10885,46 @@ $</p>
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>1.0</th>
-<th>2.0</th>
-<th>3.0</th>
-<th>5.0</th>
-<th>7.0</th>
-<th>10.0</th>
-<th>20.0</th>
-<th>30.0</th>
-</tr>
-<tr>
-<th>date</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>1990-01-31</th>
-<td>0.027290</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;1.0&lt;/th&gt;
+      &lt;th&gt;2.0&lt;/th&gt;
+      &lt;th&gt;3.0&lt;/th&gt;
+      &lt;th&gt;5.0&lt;/th&gt;
+      &lt;th&gt;7.0&lt;/th&gt;
+      &lt;th&gt;10.0&lt;/th&gt;
+      &lt;th&gt;20.0&lt;/th&gt;
+      &lt;th&gt;30.0&lt;/th&gt;
+    
+      &lt;th&gt;date&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th&gt;1990-01-31&lt;/th&gt;
+      
+      &lt;th&gt;1990-02-28&lt;/th&gt;
+      
+      &lt;th&gt;1990-03-31&lt;/th&gt;
+      
+      &lt;th&gt;1990-04-30&lt;/th&gt;
+      
+      &lt;th&gt;1990-05-31&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr>
+<tr></tr><tr><td>0.027290</td>
 <td>0.020870</td>
 <td>0.023581</td>
 <td>0.040637</td>
@@ -10901,9 +10933,7 @@ $</p>
 <td>1.818128</td>
 <td>-430.320652</td>
 </tr>
-<tr>
-<th>1990-02-28</th>
-<td>0.026877</td>
+<tr><td>0.026877</td>
 <td>0.020070</td>
 <td>0.022486</td>
 <td>0.038854</td>
@@ -10912,9 +10942,7 @@ $</p>
 <td>1.734290</td>
 <td>-431.862708</td>
 </tr>
-<tr>
-<th>1990-03-31</th>
-<td>0.027016</td>
+<tr><td>0.027016</td>
 <td>0.019273</td>
 <td>0.020994</td>
 <td>0.035967</td>
@@ -10923,9 +10951,7 @@ $</p>
 <td>1.585390</td>
 <td>-434.602759</td>
 </tr>
-<tr>
-<th>1990-04-30</th>
-<td>0.026891</td>
+<tr><td>0.026891</td>
 <td>0.018409</td>
 <td>0.019664</td>
 <td>0.033667</td>
@@ -10934,9 +10960,7 @@ $</p>
 <td>1.473642</td>
 <td>-436.658533</td>
 </tr>
-<tr>
-<th>1990-05-31</th>
-<td>0.025187</td>
+<tr><td>0.025187</td>
 <td>0.017341</td>
 <td>0.018848</td>
 <td>0.033008</td>
@@ -10944,9 +10968,7 @@ $</p>
 <td>0.143961</td>
 <td>1.461309</td>
 <td>-436.883605</td>
-</tr>
-</tbody>
-</table>
+</tr>&lt;/tbody&gt;</table>
 </div>
 </div>
 </div>
@@ -10959,12 +10981,12 @@ $</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="AFNS-approach-used-here">AFNS approach used here<a class="anchor-link" href="#AFNS-approach-used-here">¶</a></h2><p>We implement AFNS as an extension on top of DNS:</p>
+&lt;h2 id="AFNS-approach-used-here"&gt;AFNS approach used here<a class="anchor-link" href="#AFNS-approach-used-here">¶</a>&lt;/h2&gt;&lt;p&gt;We implement AFNS as an extension on top of DNS:&lt;/p&gt;
 <ul>
 <li>Keep factor dynamics under the physical measure $\mathbb{P}$ (estimated from data).</li>
 <li>Modify the measurement equation by adding the AFNS adjustment term.</li>
 </ul>
-<p>This is a pragmatic “best of both worlds” approach:</p>
+&lt;p&gt;This is a pragmatic “best of both worlds” approach:&lt;/p&gt;
 <ul>
 <li>retains the DNS interpretability and estimation pipeline,</li>
 <li>introduces no-arbitrage consistency in yield construction.</li>
@@ -11087,12 +11109,13 @@ $</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Utility-functions:-DNS-yields-and-parameter-vector">Utility functions: DNS yields and parameter vector<a class="anchor-link" href="#Utility-functions:-DNS-yields-and-parameter-vector">¶</a></h2><p>We keep helper functions for:</p>
+&lt;h2 id="Utility-functions:-DNS-yields-and-parameter-vector"&gt;Utility functions: DNS yields and parameter vector<a class="anchor-link" href="#Utility-functions:-DNS-yields-and-parameter-vector">¶</a>&lt;/h2&gt;&lt;p&gt;We keep helper functions for:&lt;/p&gt;
 <ul>
 <li>generating DNS yields from factors (baseline reference),</li>
 <li>unpacking the parameter vector $\theta$ used in optimization.</li>
 </ul>
-<p>Packing parameters into a vector is standard for numerical optimization; unpacking makes the model readable and reduces bugs when mapping parameters to matrices $(\Phi, Q, R$, etc.).</p>
+&lt;p&gt;Packing parameters into a vector is standard for numerical optimization; unpacking makes the model readable and reduces bugs when mapping parameters to matrices $(\Phi, Q, R$, etc.).&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -11170,14 +11193,14 @@ $</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="CurveModelAFNS:-reusable-curve-model-object"><code>CurveModelAFNS</code>: reusable curve model object<a class="anchor-link" href="#CurveModelAFNS:-reusable-curve-model-object">¶</a></h2><p><code>CurveModelAFNS</code> is the “model object” used downstream.</p>
-<p>Responsibilities:</p>
+&lt;h2 id="CurveModelAFNS:-reusable-curve-model-object"&gt;<code>CurveModelAFNS</code>: reusable curve model object<a class="anchor-link" href="#CurveModelAFNS:-reusable-curve-model-object">¶</a>&lt;/h2&gt;&lt;p&gt;<code>CurveModelAFNS</code> is the “model object” used downstream.&lt;/p&gt;
+&lt;p&gt;Responsibilities:&lt;/p&gt;
 <ul>
 <li>store estimated parameters,</li>
 <li>simulate factor paths under $\mathbb{P}$-dynamics,</li>
 <li>transform factors into yields under DNS or AFNS.</li>
 </ul>
-<p>This is useful because later sections (NII, LQ, RL) can treat the term structure model as a black box that produces:</p>
+&lt;p&gt;This is useful because later sections (NII, LQ, RL) can treat the term structure model as a black box that produces:&lt;/p&gt;
 <ul>
 <li>state variables (factors),</li>
 <li>and market observables (yields/forwards).</li>
@@ -11278,13 +11301,13 @@ $</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="AFNS-estimation-step">AFNS estimation step<a class="anchor-link" href="#AFNS-estimation-step">¶</a></h2><p>We estimate AFNS parameters by maximizing the likelihood of the yield panel under the AFNS state-space model.</p>
-<p>Compared to DNS:</p>
+&lt;h2 id="AFNS-estimation-step"&gt;AFNS estimation step<a class="anchor-link" href="#AFNS-estimation-step">¶</a>&lt;/h2&gt;&lt;p&gt;We estimate AFNS parameters by maximizing the likelihood of the yield panel under the AFNS state-space model.&lt;/p&gt;
+&lt;p&gt;Compared to DNS:&lt;/p&gt;
 <ul>
 <li>the observation equation includes the AFNS adjustment,</li>
 <li>additional parameters govern the adjustment term (volatility-related).</li>
 </ul>
-<p>The output is a single parameter vector $\theta$ that defines both:</p>
+&lt;p&gt;The output is a single parameter vector $\theta$ that defines both:&lt;/p&gt;
 <ul>
 <li>the factor dynamics,</li>
 <li>and the measurement mapping implied by no-arbitrage.</li>
@@ -11508,12 +11531,12 @@ $</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Maturities-and-yield-matrix-used-for-AFNS">Maturities and yield matrix used for AFNS<a class="anchor-link" href="#Maturities-and-yield-matrix-used-for-AFNS">¶</a></h2><p>Here we select a fixed set of maturities (e.g., 1y, 2y, 3y, ..., 30y) and build:</p>
+&lt;h2 id="Maturities-and-yield-matrix-used-for-AFNS"&gt;Maturities and yield matrix used for AFNS<a class="anchor-link" href="#Maturities-and-yield-matrix-used-for-AFNS">¶</a>&lt;/h2&gt;&lt;p&gt;Here we select a fixed set of maturities (e.g., 1y, 2y, 3y, ..., 30y) and build:&lt;/p&gt;
 <ul>
 <li>the yield matrix $Y$ as (T × N),</li>
 <li>the maturity vector $\tau$ in years.</li>
 </ul>
-<p>This consistent maturity grid is important for:</p>
+&lt;p&gt;This consistent maturity grid is important for:&lt;/p&gt;
 <ul>
 <li>stable estimation,</li>
 <li>clean stress tests,</li>
@@ -11571,13 +11594,14 @@ Estimated parameters: [ 0.99102606  0.98948413  0.95145194  0.05888597 -0.040584
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Sanity-checking-the-fitted-AFNS-model">Sanity-checking the fitted AFNS model<a class="anchor-link" href="#Sanity-checking-the-fitted-AFNS-model">¶</a></h2><p>We instantiate the AFNS curve model and verify basic behavior:</p>
+&lt;h2 id="Sanity-checking-the-fitted-AFNS-model"&gt;Sanity-checking the fitted AFNS model<a class="anchor-link" href="#Sanity-checking-the-fitted-AFNS-model">¶</a>&lt;/h2&gt;&lt;p&gt;We instantiate the AFNS curve model and verify basic behavior:&lt;/p&gt;
 <ul>
 <li>yields are in a plausible range,</li>
 <li>simulated yields move smoothly with factors,</li>
 <li>the mapping is stable across maturities.</li>
 </ul>
-<p>This “model health check” matters because any downstream hedging result is only meaningful if the term structure layer is sensible.</p>
+&lt;p&gt;This “model health check” matters because any downstream hedging result is only meaningful if the term structure layer is sensible.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -11647,7 +11671,8 @@ Estimated parameters: [ 0.99102606  0.98948413  0.95145194  0.05888597 -0.040584
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>state_space.py</p>
+&lt;p&gt;state_space.py&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -11658,14 +11683,15 @@ Estimated parameters: [ 0.99102606  0.98948413  0.95145194  0.05888597 -0.040584
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="State-space:-filtering-and-smoothing-for-AFNS">State space: filtering and smoothing for AFNS<a class="anchor-link" href="#State-space:-filtering-and-smoothing-for-AFNS">¶</a></h2><p>For decision problems, we often want a clean state estimate at every time step.</p>
-<p>The following functions provide:</p>
+&lt;h2 id="State-space:-filtering-and-smoothing-for-AFNS"&gt;State space: filtering and smoothing for AFNS<a class="anchor-link" href="#State-space:-filtering-and-smoothing-for-AFNS">¶</a>&lt;/h2&gt;&lt;p&gt;For decision problems, we often want a clean state estimate at every time step.&lt;/p&gt;
+&lt;p&gt;The following functions provide:&lt;/p&gt;
 <ul>
 <li>Kalman filtering (online state estimation),</li>
 <li>RTS smoothing (offline best estimate using the full sample),</li>
 <li>log-likelihood computation for estimation.</li>
 </ul>
-<p>The output (predicted/filtered/smoothed states) is also helpful for explaining uncertainty and model diagnostics.</p>
+&lt;p&gt;The output (predicted/filtered/smoothed states) is also helpful for explaining uncertainty and model diagnostics.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -11805,12 +11831,13 @@ Estimated parameters: [ 0.99102606  0.98948413  0.95145194  0.05888597 -0.040584
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Predicted-vs-filtered-vs-smoothed-states">Predicted vs filtered vs smoothed states<a class="anchor-link" href="#Predicted-vs-filtered-vs-smoothed-states">¶</a></h2><ul>
+&lt;h2 id="Predicted-vs-filtered-vs-smoothed-states"&gt;Predicted vs filtered vs smoothed states<a class="anchor-link" href="#Predicted-vs-filtered-vs-smoothed-states">¶</a>&lt;/h2&gt;<ul>
 <li><strong>Predicted</strong> $X_{t|t-1}$: what the model expects before seeing data at time $t$.</li>
 <li><strong>Filtered</strong> $X_{t|t}$: updated estimate after observing yields at $t$.</li>
 <li><strong>Smoothed</strong> $X_{t|T}$: best estimate using all observations $1,\ldots,T$.</li>
 </ul>
-<p>For hedging experiments in this notebook we mainly use <strong>smoothed factors</strong> as a clean, denoised “state history” to drive baseline paths and stress tests.</p>
+&lt;p&gt;For hedging experiments in this notebook we mainly use <strong>smoothed factors</strong> as a clean, denoised “state history” to drive baseline paths and stress tests.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -11893,14 +11920,15 @@ Estimated parameters: [ 0.99102606  0.98948413  0.95145194  0.05888597 -0.040584
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="AFNS-filtering/smoothing-output">AFNS filtering/smoothing output<a class="anchor-link" href="#AFNS-filtering/smoothing-output">¶</a></h2><p>We run the AFNS filter/smoother and compare the resulting factor estimates to the simpler DNS versions.</p>
-<p>At this point, we have a complete term-structure layer:</p>
+&lt;h2 id="AFNS-filtering/smoothing-output"&gt;AFNS filtering/smoothing output<a class="anchor-link" href="#AFNS-filtering/smoothing-output">¶</a>&lt;/h2&gt;&lt;p&gt;We run the AFNS filter/smoother and compare the resulting factor estimates to the simpler DNS versions.&lt;/p&gt;
+&lt;p&gt;At this point, we have a complete term-structure layer:&lt;/p&gt;
 <ul>
 <li>no-arbitrage consistent measurement equation,</li>
 <li>estimated factor dynamics,</li>
 <li>and a usable state vector $X_t = (L_t, S_t, C_t)$.</li>
 </ul>
-<p>Next we shift from modeling to decision-making: define a simplified banking book and formulate hedging as a control/RL problem.</p>
+&lt;p&gt;Next we shift from modeling to decision-making: define a simplified banking book and formulate hedging as a control/RL problem.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -12005,101 +12033,107 @@ Estimated parameters: [ 0.99102606  0.98948413  0.95145194  0.05888597 -0.040584
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Part-III:-Banking-book-and-NII-hedging-experiment-design">Part III: Banking book and NII hedging experiment design<a class="anchor-link" href="#Part-III:-Banking-book-and-NII-hedging-experiment-design">¶</a></h1><h2 id="From-State-Space-Modeling-to-Optimal-Control:-Kalman-Filtering-and-LQ-Control">From State-Space Modeling to Optimal Control: Kalman Filtering and LQ Control<a class="anchor-link" href="#From-State-Space-Modeling-to-Optimal-Control:-Kalman-Filtering-and-LQ-Control">¶</a></h2><p>We now build on the state-space representation of the yield curve provided by the AFNS model to study <strong>estimation, prediction, and optimal hedging decisions</strong>. Once interest rate dynamics are expressed in state-space form, two powerful and closely related tools become available:</p>
+&lt;h1 id="Part-III:-Banking-book-and-NII-hedging-experiment-design"&gt;Part III: Banking book and NII hedging experiment design<a class="anchor-link" href="#Part-III:-Banking-book-and-NII-hedging-experiment-design">¶</a>&lt;/h1&gt;&lt;h2 id="From-State-Space-Modeling-to-Optimal-Control:-Kalman-Filtering-and-LQ-Control"&gt;From State-Space Modeling to Optimal Control: Kalman Filtering and LQ Control<a class="anchor-link" href="#From-State-Space-Modeling-to-Optimal-Control:-Kalman-Filtering-and-LQ-Control">¶</a>&lt;/h2&gt;&lt;p&gt;We now build on the state-space representation of the yield curve provided by the AFNS model to study <strong>estimation, prediction, and optimal hedging decisions</strong>. Once interest rate dynamics are expressed in state-space form, two powerful and closely related tools become available:&lt;/p&gt;
 <ol>
 <li><strong>Kalman filtering and smoothing</strong>, for inference on latent states;</li>
 <li><strong>Optimal control theory</strong>, for designing dynamic hedging policies.</li>
 </ol>
-<p>This section explains how these tools arise naturally from the AFNS state-space structure and how they are used in this work.</p>
-<hr/>
-<h2 id="State-Space-Structure-as-the-Unifying-Framework">State-Space Structure as the Unifying Framework<a class="anchor-link" href="#State-Space-Structure-as-the-Unifying-Framework">¶</a></h2><p>Recall that the AFNS model provides a linear Gaussian state-space representation of the yield curve:</p>
-<h3 id="State-(transition)-equation">State (transition) equation<a class="anchor-link" href="#State-(transition)-equation">¶</a></h3><h1 id="$%0A%5Cmathbf%7BX%7D_%7Bt+1%7D">$
-\mathbf{X}_{t+1}<a class="anchor-link" href="#$%0A%5Cmathbf%7BX%7D_%7Bt+1%7D">¶</a></h1><p>\boldsymbol{\mu}
+&lt;p&gt;This section explains how these tools arise naturally from the AFNS state-space structure and how they are used in this work.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="State-Space-Structure-as-the-Unifying-Framework"&gt;State-Space Structure as the Unifying Framework<a class="anchor-link" href="#State-Space-Structure-as-the-Unifying-Framework">¶</a>&lt;/h2&gt;&lt;p&gt;Recall that the AFNS model provides a linear Gaussian state-space representation of the yield curve:&lt;/p&gt;
+&lt;h3 id="State-(transition)-equation"&gt;State (transition) equation<a class="anchor-link" href="#State-(transition)-equation">¶</a>&lt;/h3&gt;&lt;p&gt;$$
+\mathbf{X}_{t+1}
+=
+\boldsymbol{\mu}
 +
-\Phi (\mathbf{X}<em>t - \boldsymbol{\mu})
+\Phi (\mathbf{X}_t - \boldsymbol{\mu})
 +
-\boldsymbol{\varepsilon}</em>{t+1},
+\boldsymbol{\varepsilon}_{t+1},
 \qquad
 \boldsymbol{\varepsilon}_{t+1} \sim \mathcal{N}(0, Q)
-$</p>
-<h3 id="Measurement-equation">Measurement equation<a class="anchor-link" href="#Measurement-equation">¶</a></h3><h1 id="$%0A%5Cmathbf%7By%7D_t">$
-\mathbf{y}_t<a class="anchor-link" href="#$%0A%5Cmathbf%7By%7D_t">¶</a></h1><p>H \mathbf{X}_t + \mathbf{a} + \boldsymbol{\eta}_t,
+$$&lt;/p&gt;
+&lt;h3 id="Measurement-equation"&gt;Measurement equation<a class="anchor-link" href="#Measurement-equation">¶</a>&lt;/h3&gt;&lt;p&gt;$$
+\mathbf{y}_t
+=
+H \mathbf{X}_t + \mathbf{a} + \boldsymbol{\eta}_t,
 \qquad
 \boldsymbol{\eta}_t \sim \mathcal{N}(0, R)
-$</p>
-<p>Here:</p>
+$$&lt;/p&gt;
+&lt;p&gt;Here:&lt;/p&gt;
 <ul>
 <li>$\mathbf{X}_t = (L_t, S_t, C_t)$ are latent yield-curve factors,</li>
 <li>$\mathbf{y}_t$ are observed yields across maturities.</li>
 </ul>
-<p>This representation separates <strong>dynamics</strong> (how rates evolve) from <strong>measurement</strong> (how rates are observed), which is the key prerequisite for both filtering and control.</p>
-<hr/>
-<h2 id="Kalman-Filtering:-Inference-on-Latent-Yield-Factors">Kalman Filtering: Inference on Latent Yield Factors<a class="anchor-link" href="#Kalman-Filtering:-Inference-on-Latent-Yield-Factors">¶</a></h2><p>The <strong>Kalman filter</strong> is an estimator for linear Gaussian state-space models. In this project, it is used to infer the unobserved AFNS factors from observed yield data.</p>
-<h3 id="Prediction">Prediction<a class="anchor-link" href="#Prediction">¶</a></h3><p>Before observing yields at time $t$, the model produces a forecast:
-$
+&lt;p&gt;This representation separates <strong>dynamics</strong> (how rates evolve) from <strong>measurement</strong> (how rates are observed), which is the key prerequisite for both filtering and control.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="Kalman-Filtering:-Inference-on-Latent-Yield-Factors"&gt;Kalman Filtering: Inference on Latent Yield Factors<a class="anchor-link" href="#Kalman-Filtering:-Inference-on-Latent-Yield-Factors">¶</a>&lt;/h2&gt;&lt;p&gt;The <strong>Kalman filter</strong> is an estimator for linear Gaussian state-space models. In this project, it is used to infer the unobserved AFNS factors from observed yield data.&lt;/p&gt;
+&lt;h3 id="Prediction"&gt;Prediction<a class="anchor-link" href="#Prediction">¶</a>&lt;/h3&gt;&lt;p&gt;Before observing yields at time $t$, the model produces a forecast:
+$$
 \hat{\mathbf{X}}_{t|t-1} = \boldsymbol{\mu} + \Phi (\hat{\mathbf{X}}_{t-1|t-1} - \boldsymbol{\mu})
-$</p>
-<p>This is a <strong>model-based prediction</strong> driven solely by the transition equation.</p>
-<hr/>
-<h3 id="Filtering">Filtering<a class="anchor-link" href="#Filtering">¶</a></h3><h1 id="After-observing-yields-$%5Cmathbf%7By%7D_t$,-the-prediction-is-updated:%0A$%0A%5Chat%7B%5Cmathbf%7BX%7D%7D_%7Bt%7Ct%7D">After observing yields $\mathbf{y}_t$, the prediction is updated:
-$
-\hat{\mathbf{X}}_{t|t}<a class="anchor-link" href="#After-observing-yields-$%5Cmathbf%7By%7D_t$,-the-prediction-is-updated:%0A$%0A%5Chat%7B%5Cmathbf%7BX%7D%7D_%7Bt%7Ct%7D">¶</a></h1><p>\hat{\mathbf{X}}<em>{t|t-1}
+$$&lt;/p&gt;
+&lt;p&gt;This is a <strong>model-based prediction</strong> driven solely by the transition equation.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3 id="Filtering"&gt;Filtering<a class="anchor-link" href="#Filtering">¶</a>&lt;/h3&gt;&lt;p&gt;After observing yields $\mathbf{y}_t$, the prediction is updated:
+$$
+\hat{\mathbf{X}}_{t|t}
+=
+\hat{\mathbf{X}}_{t|t-1}
 +
 K_t
 \big(
-\mathbf{y}_t - H \hat{\mathbf{X}}</em>{t|t-1} - \mathbf{a}
+\mathbf{y}_t - H \hat{\mathbf{X}}_{t|t-1} - \mathbf{a}
 \big)
-$</p>
-<p>The Kalman gain $K_t$ balances:</p>
+$$&lt;/p&gt;
+&lt;p&gt;The Kalman gain $K_t$ balances:&lt;/p&gt;
 <ul>
 <li>confidence in the model (via $Q$),</li>
 <li>confidence in the data (via $R$).</li>
 </ul>
-<p>This filtered estimate represents <strong>real-time knowledge</strong> of the yield curve.</p>
-<hr/>
-<h3 id="Smoothing">Smoothing<a class="anchor-link" href="#Smoothing">¶</a></h3><p>For structural analysis, the <strong>Rauch–Tung–Striebel (RTS) smoother</strong> is applied after filtering. It combines past, present, and future information to produce:
-$
+&lt;p&gt;This filtered estimate represents <strong>real-time knowledge</strong> of the yield curve.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h3 id="Smoothing"&gt;Smoothing<a class="anchor-link" href="#Smoothing">¶</a>&lt;/h3&gt;&lt;p&gt;For structural analysis, the <strong>Rauch–Tung–Striebel (RTS) smoother</strong> is applied after filtering. It combines past, present, and future information to produce:
+$$
 \hat{\mathbf{X}}_{t|T}
-$</p>
-<p>In this project, smoothed AFNS factors provide:</p>
+$$&lt;/p&gt;
+&lt;p&gt;In this project, smoothed AFNS factors provide:&lt;/p&gt;
 <ul>
 <li>low-noise state estimates,</li>
 <li>a stable reference path for calibration,</li>
 <li>and a clean baseline for control experiments.</li>
 </ul>
-<hr/>
-<h2 id="From-Estimation-to-Decision-Making:-Augmenting-the-State">From Estimation to Decision-Making: Augmenting the State<a class="anchor-link" href="#From-Estimation-to-Decision-Making:-Augmenting-the-State">¶</a></h2><p>To study hedging, the state vector is augmented to include the hedge inventory:
-$
+&lt;hr /&gt;
+&lt;h2 id="From-Estimation-to-Decision-Making:-Augmenting-the-State"&gt;From Estimation to Decision-Making: Augmenting the State<a class="anchor-link" href="#From-Estimation-to-Decision-Making:-Augmenting-the-State">¶</a>&lt;/h2&gt;&lt;p&gt;To study hedging, the state vector is augmented to include the hedge inventory:
+$$
 \mathbf{s}_t =
 \begin{pmatrix}
 L_t \\ S_t \\ C_t \\ h_t
 \end{pmatrix}
-$</p>
-<p>The augmented dynamics are linear:
-$
+$$&lt;/p&gt;
+&lt;p&gt;The augmented dynamics are linear:
+$$
 \mathbf{s}_{t+1} = A \mathbf{s}_t + B u_t + \boldsymbol{\xi}_{t+1}
-$</p>
-<p>where:</p>
+$$&lt;/p&gt;
+&lt;p&gt;where:&lt;/p&gt;
 <ul>
 <li>$u_t = \Delta h_t$ is the hedge adjustment (control),</li>
 <li>yield-curve factors evolve exogenously,</li>
 <li>hedge inventory evolves deterministically given control.</li>
 </ul>
-<p>This linear state-space system forms the basis of <strong>optimal control theory</strong>.</p>
-<hr/>
-<h2 id="Optimal-Control-Theory-in-This-Context">Optimal Control Theory in This Context<a class="anchor-link" href="#Optimal-Control-Theory-in-This-Context">¶</a></h2><p>Optimal control asks:</p>
+&lt;p&gt;This linear state-space system forms the basis of <strong>optimal control theory</strong>.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="Optimal-Control-Theory-in-This-Context"&gt;Optimal Control Theory in This Context<a class="anchor-link" href="#Optimal-Control-Theory-in-This-Context">¶</a>&lt;/h2&gt;&lt;p&gt;Optimal control asks:&lt;/p&gt;
 <blockquote>
-<p><em>Given stochastic state dynamics, how should control actions be chosen to optimize a long-run objective?</em></p>
+&lt;p&gt;<em>Given stochastic state dynamics, how should control actions be chosen to optimize a long-run objective?</em>&lt;/p&gt;
 </blockquote>
-<p>In this project, the objective is to <strong>stabilize Net Interest Income (NII)</strong> while controlling hedge usage.</p>
-<p>NII is a linear function of the state:
-$
+&lt;p&gt;In this project, the objective is to <strong>stabilize Net Interest Income (NII)</strong> while controlling hedge usage.&lt;/p&gt;
+&lt;p&gt;NII is a linear function of the state:
+$$
 \text{NII}_{t+1} = C^\top \mathbf{s}_t + D h_t + \text{noise}
-$</p>
-<p>This linear–Gaussian structure makes classical control tools applicable.</p>
-<hr/>
-<h2 id="Linear%E2%80%93Quadratic-(LQ)-Control-with-L2-Costs">Linear–Quadratic (LQ) Control with L2 Costs<a class="anchor-link" href="#Linear%E2%80%93Quadratic-(LQ)-Control-with-L2-Costs">¶</a></h2><h3 id="Quadratic-Objective">Quadratic Objective<a class="anchor-link" href="#Quadratic-Objective">¶</a></h3><p>The LQ framework assumes a quadratic objective:
-$
+$$&lt;/p&gt;
+&lt;p&gt;This linear–Gaussian structure makes classical control tools applicable.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="Linear%E2%80%93Quadratic-(LQ)-Control-with-L2-Costs"&gt;Linear–Quadratic (LQ) Control with L2 Costs<a class="anchor-link" href="#Linear%E2%80%93Quadratic-(LQ)-Control-with-L2-Costs">¶</a>&lt;/h2&gt;&lt;h3 id="Quadratic-Objective"&gt;Quadratic Objective<a class="anchor-link" href="#Quadratic-Objective">¶</a>&lt;/h3&gt;&lt;p&gt;The LQ framework assumes a quadratic objective:
+$$
 \min_{u_t}
 \mathbb{E}
 \sum_{t=0}^{\infty}
@@ -12110,57 +12144,57 @@ $
 +
 \lambda_u u_t^2
 \right)
-$</p>
-<p>Interpretation:</p>
+$$&lt;/p&gt;
+&lt;p&gt;Interpretation:&lt;/p&gt;
 <ul>
 <li>penalize NII volatility (interest rate risk),</li>
 <li>penalize large hedge inventories (balance-sheet usage),</li>
 <li>penalize frequent hedge adjustments (trading intensity).</li>
 </ul>
-<hr/>
-<h3 id="Optimal-Policy">Optimal Policy<a class="anchor-link" href="#Optimal-Policy">¶</a></h3><p>Under linear dynamics and quadratic costs:</p>
+&lt;hr /&gt;
+&lt;h3 id="Optimal-Policy"&gt;Optimal Policy<a class="anchor-link" href="#Optimal-Policy">¶</a>&lt;/h3&gt;&lt;p&gt;Under linear dynamics and quadratic costs:&lt;/p&gt;
 <ul>
 <li>the value function is quadratic,</li>
 <li>the optimal policy is <strong>linear in the state</strong>:
-$
+$$
 u_t = -K \mathbf{s}_t
-$</li>
+$$</li>
 </ul>
-<p>The feedback matrix $K$ is obtained by solving the <strong>Riccati equation</strong>.</p>
-<p>This solution is:</p>
+&lt;p&gt;The feedback matrix $K$ is obtained by solving the <strong>Riccati equation</strong>.&lt;/p&gt;
+&lt;p&gt;This solution is:&lt;/p&gt;
 <ul>
 <li>analytical,</li>
 <li>stable,</li>
 <li>fully interpretable.</li>
 </ul>
-<hr/>
-<h2 id="Why-LQ-Control-Is-a-Natural-Benchmark">Why LQ Control Is a Natural Benchmark<a class="anchor-link" href="#Why-LQ-Control-Is-a-Natural-Benchmark">¶</a></h2><p>LQ control represents the <strong>best possible policy</strong> under the assumptions of:</p>
+&lt;hr /&gt;
+&lt;h2 id="Why-LQ-Control-Is-a-Natural-Benchmark"&gt;Why LQ Control Is a Natural Benchmark<a class="anchor-link" href="#Why-LQ-Control-Is-a-Natural-Benchmark">¶</a>&lt;/h2&gt;&lt;p&gt;LQ control represents the <strong>best possible policy</strong> under the assumptions of:&lt;/p&gt;
 <ul>
 <li>linear dynamics,</li>
 <li>Gaussian shocks,</li>
 <li>symmetric (quadratic) costs.</li>
 </ul>
-<p>In this project:</p>
+&lt;p&gt;In this project:&lt;/p&gt;
 <ul>
 <li>the AFNS model satisfies these assumptions almost exactly,</li>
 <li>making LQ control an ideal theoretical benchmark.</li>
 </ul>
-<p>Importantly, LQ control is <strong>not an approximation</strong> here. It is the optimal solution to a well-defined problem.</p>
-<hr/>
-<h2 id="Role-in-This-Project">Role in This Project<a class="anchor-link" href="#Role-in-This-Project">¶</a></h2><p>The LQ solution serves three purposes:</p>
+&lt;p&gt;Importantly, LQ control is <strong>not an approximation</strong> here. It is the optimal solution to a well-defined problem.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="Role-in-This-Project"&gt;Role in This Project<a class="anchor-link" href="#Role-in-This-Project">¶</a>&lt;/h2&gt;&lt;p&gt;The LQ solution serves three purposes:&lt;/p&gt;
 <ol>
-<li><p><strong>Economic benchmark</strong><br/>
-It defines what optimal hedging looks like in a frictionless quadratic world.</p>
+<li>&lt;p&gt;<strong>Economic benchmark</strong>&lt;br /&gt;
+It defines what optimal hedging looks like in a frictionless quadratic world.&lt;/p&gt;
 </li>
-<li><p><strong>Diagnostic tool</strong><br/>
-Deviations from LQ performance reveal where assumptions break down.</p>
+<li>&lt;p&gt;<strong>Diagnostic tool</strong>&lt;br /&gt;
+Deviations from LQ performance reveal where assumptions break down.&lt;/p&gt;
 </li>
-<li><p><strong>Reference point for RL</strong><br/>
-Reinforcement learning is introduced only when costs become non-quadratic (e.g. L1 transaction costs), a setting where LQ theory no longer applies.</p>
+<li>&lt;p&gt;<strong>Reference point for RL</strong>&lt;br /&gt;
+Reinforcement learning is introduced only when costs become non-quadratic (e.g. L1 transaction costs), a setting where LQ theory no longer applies.&lt;/p&gt;
 </li>
 </ol>
-<hr/>
-<h2 id="Conceptual-Summary">Conceptual Summary<a class="anchor-link" href="#Conceptual-Summary">¶</a></h2><ul>
+&lt;hr /&gt;
+&lt;h2 id="Conceptual-Summary"&gt;Conceptual Summary<a class="anchor-link" href="#Conceptual-Summary">¶</a>&lt;/h2&gt;<ul>
 <li>The AFNS model provides a linear Gaussian state-space description of interest rate dynamics.</li>
 <li>The Kalman filter extracts latent yield-curve factors optimally.</li>
 <li>Augmenting the state with hedge inventory transforms the model into a controlled system.</li>
@@ -12177,14 +12211,15 @@ Reinforcement learning is introduced only when costs become non-quadratic (e.g. 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>We now connect the term-structure state $X_t$ to a simplified IRRBB objective.</p>
-<p>Main ingredients:</p>
+&lt;p&gt;We now connect the term-structure state $X_t$ to a simplified IRRBB objective.&lt;/p&gt;
+&lt;p&gt;Main ingredients:&lt;/p&gt;
 <ul>
 <li>a stylized balance sheet with representative asset and liability repricing maturities,</li>
 <li>a hedging instrument (FRA-style payoff in this notebook),</li>
 <li>an objective function that trades off NII risk vs hedge usage and trading costs.</li>
 </ul>
-<p>This is intentionally simplified: the goal is a clean, interpretable sandbox where we can compare classical control and RL under controlled assumptions.</p>
+&lt;p&gt;This is intentionally simplified: the goal is a clean, interpretable sandbox where we can compare classical control and RL under controlled assumptions.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -12195,7 +12230,7 @@ Reinforcement learning is introduced only when costs become non-quadratic (e.g. 
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="LQ-control-benchmark-(quadratic-costs)">LQ control benchmark (quadratic costs)<a class="anchor-link" href="#LQ-control-benchmark-(quadratic-costs)">¶</a></h2><p>We first set up a classical Linear–Quadratic (LQ) benchmark:</p>
+&lt;h2 id="LQ-control-benchmark-(quadratic-costs)"&gt;LQ control benchmark (quadratic costs)<a class="anchor-link" href="#LQ-control-benchmark-(quadratic-costs)">¶</a>&lt;/h2&gt;&lt;p&gt;We first set up a classical Linear–Quadratic (LQ) benchmark:&lt;/p&gt;
 <ul>
 <li>State includes curve factors and hedge inventory.</li>
 <li>Control is the hedge adjustment $u_t = \Delta h_t$.</li>
@@ -12206,7 +12241,8 @@ Reinforcement learning is introduced only when costs become non-quadratic (e.g. 
 </ul>
 </li>
 </ul>
-<p>This is the regime where classical control is expected to perform very well because the dynamics are linear-Gaussian and the objective is quadratic.</p>
+&lt;p&gt;This is the regime where classical control is expected to perform very well because the dynamics are linear-Gaussian and the objective is quadratic.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -12809,7 +12845,7 @@ std NII hedged stress: 0.011302768582036403
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[54]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -12821,36 +12857,54 @@ std NII hedged stress: 0.011302768582036403
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>lambda_u</th>
-<th>lambda_h</th>
-<th>Hx_hedge_sensitivity</th>
-<th>K_max_abs</th>
-<th>std_unhedged</th>
-<th>std_hedged</th>
-<th>std_reduction_%</th>
-<th>min_unhedged</th>
-<th>min_hedged</th>
-<th>p05_unhedged</th>
-<th>p05_hedged</th>
-<th>mean_unhedged</th>
-<th>mean_hedged</th>
-<th>mean_abs_h</th>
-<th>max_abs_h</th>
-<th>mean_abs_u</th>
-<th>max_abs_u</th>
-<th>turnover_proxy</th>
-<th>inventory_proxy</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>1.000000e-09</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;lambda_u&lt;/th&gt;
+      &lt;th&gt;lambda_h&lt;/th&gt;
+      &lt;th&gt;Hx_hedge_sensitivity&lt;/th&gt;
+      &lt;th&gt;K_max_abs&lt;/th&gt;
+      &lt;th&gt;std_unhedged&lt;/th&gt;
+      &lt;th&gt;std_hedged&lt;/th&gt;
+      &lt;th&gt;std_reduction_%&lt;/th&gt;
+      &lt;th&gt;min_unhedged&lt;/th&gt;
+      &lt;th&gt;min_hedged&lt;/th&gt;
+      &lt;th&gt;p05_unhedged&lt;/th&gt;
+      &lt;th&gt;p05_hedged&lt;/th&gt;
+      &lt;th&gt;mean_unhedged&lt;/th&gt;
+      &lt;th&gt;mean_hedged&lt;/th&gt;
+      &lt;th&gt;mean_abs_h&lt;/th&gt;
+      &lt;th&gt;max_abs_h&lt;/th&gt;
+      &lt;th&gt;mean_abs_u&lt;/th&gt;
+      &lt;th&gt;max_abs_u&lt;/th&gt;
+      &lt;th&gt;turnover_proxy&lt;/th&gt;
+      &lt;th&gt;inventory_proxy&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th&gt;0&lt;/th&gt;
+      
+      &lt;th&gt;1&lt;/th&gt;
+      
+      &lt;th&gt;2&lt;/th&gt;
+      
+      &lt;th&gt;3&lt;/th&gt;
+      
+      &lt;th&gt;4&lt;/th&gt;
+      
+      &lt;th&gt;5&lt;/th&gt;
+      
+      &lt;th&gt;6&lt;/th&gt;
+      
+      &lt;th&gt;7&lt;/th&gt;
+      
+      &lt;th&gt;8&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr><tr><td>1.000000e-09</td>
 <td>1.000000e-03</td>
 <td>0.0</td>
 <td>0.999999</td>
@@ -12870,9 +12924,7 @@ std NII hedged stress: 0.011302768582036403
 <td>0.095120</td>
 <td>40.996852</td>
 </tr>
-<tr>
-<th>1</th>
-<td>1.000000e-09</td>
+<tr><td>1.000000e-09</td>
 <td>1.000000e-06</td>
 <td>0.0</td>
 <td>0.999040</td>
@@ -12892,9 +12944,7 @@ std NII hedged stress: 0.011302768582036403
 <td>0.095120</td>
 <td>40.996761</td>
 </tr>
-<tr>
-<th>2</th>
-<td>1.000000e-06</td>
+<tr><td>1.000000e-06</td>
 <td>1.000000e-03</td>
 <td>0.0</td>
 <td>0.999002</td>
@@ -12914,9 +12964,7 @@ std NII hedged stress: 0.011302768582036403
 <td>0.095120</td>
 <td>40.996757</td>
 </tr>
-<tr>
-<th>3</th>
-<td>1.000000e-09</td>
+<tr><td>1.000000e-09</td>
 <td>1.000000e-09</td>
 <td>0.0</td>
 <td>0.976264</td>
@@ -12936,9 +12984,7 @@ std NII hedged stress: 0.011302768582036403
 <td>0.095120</td>
 <td>40.994545</td>
 </tr>
-<tr>
-<th>4</th>
-<td>1.000000e-06</td>
+<tr><td>1.000000e-06</td>
 <td>1.000000e-06</td>
 <td>0.0</td>
 <td>0.624588</td>
@@ -12958,9 +13004,7 @@ std NII hedged stress: 0.011302768582036403
 <td>0.095120</td>
 <td>40.939812</td>
 </tr>
-<tr>
-<th>5</th>
-<td>1.000000e-03</td>
+<tr><td>1.000000e-03</td>
 <td>1.000000e-03</td>
 <td>0.0</td>
 <td>0.618041</td>
@@ -12980,9 +13024,7 @@ std NII hedged stress: 0.011302768582036403
 <td>0.095120</td>
 <td>40.938202</td>
 </tr>
-<tr>
-<th>6</th>
-<td>1.000000e-06</td>
+<tr><td>1.000000e-06</td>
 <td>1.000000e-09</td>
 <td>0.0</td>
 <td>0.181312</td>
@@ -13002,9 +13044,7 @@ std NII hedged stress: 0.011302768582036403
 <td>0.095120</td>
 <td>40.568344</td>
 </tr>
-<tr>
-<th>7</th>
-<td>1.000000e-03</td>
+<tr><td>1.000000e-03</td>
 <td>1.000000e-06</td>
 <td>0.0</td>
 <td>0.031721</td>
@@ -13024,9 +13064,7 @@ std NII hedged stress: 0.011302768582036403
 <td>0.095120</td>
 <td>38.099998</td>
 </tr>
-<tr>
-<th>8</th>
-<td>1.000000e-03</td>
+<tr><td>1.000000e-03</td>
 <td>1.000000e-09</td>
 <td>0.0</td>
 <td>0.006317</td>
@@ -13045,9 +13083,7 @@ std NII hedged stress: 0.011302768582036403
 <td>0.259565</td>
 <td>0.088962</td>
 <td>27.034485</td>
-</tr>
-</tbody>
-</table>
+</tr>&lt;/tbody&gt;</table>
 </div>
 </div>
 </div>
@@ -13100,13 +13136,14 @@ std NII hedged stress: 0.011302768582036403
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Choosing-penalties:-risk%E2%80%93turnover-trade-off-curve">Choosing penalties: risk–turnover trade-off curve<a class="anchor-link" href="#Choosing-penalties:-risk%E2%80%93turnover-trade-off-curve">¶</a></h2><p>Rather than picking $\lambda_u, \lambda_h$ arbitrarily, we sweep penalty values and measure:</p>
+&lt;h2 id="Choosing-penalties:-risk%E2%80%93turnover-trade-off-curve"&gt;Choosing penalties: risk–turnover trade-off curve<a class="anchor-link" href="#Choosing-penalties:-risk%E2%80%93turnover-trade-off-curve">¶</a>&lt;/h2&gt;&lt;p&gt;Rather than picking $\lambda_u, \lambda_h$ arbitrarily, we sweep penalty values and measure:&lt;/p&gt;
 <ul>
 <li>NII risk reduction</li>
 <li>versus trading activity (turnover) and inventory usage.</li>
 </ul>
-<p>This produces a Pareto-style trade-off curve.<br/>
-We then select a benchmark point that delivers meaningful risk reduction without unrealistic trading.</p>
+&lt;p&gt;This produces a Pareto-style trade-off curve.&lt;br /&gt;
+We then select a benchmark point that delivers meaningful risk reduction without unrealistic trading.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -13199,14 +13236,15 @@ We then select a benchmark point that delivers meaningful risk reduction without
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Simplified-NII-model-and-hedge-instrument">Simplified NII model and hedge instrument<a class="anchor-link" href="#Simplified-NII-model-and-hedge-instrument">¶</a></h2><p>We compute a stylized monthly NII:</p>
+&lt;h2 id="Simplified-NII-model-and-hedge-instrument"&gt;Simplified NII model and hedge instrument<a class="anchor-link" href="#Simplified-NII-model-and-hedge-instrument">¶</a>&lt;/h2&gt;&lt;p&gt;We compute a stylized monthly NII:&lt;/p&gt;
 <ul>
 <li>Assets repricing at a representative maturity $\tau_A$</li>
 <li>Liabilities repricing at $\tau_L$</li>
 <li>Hedge is modeled as an FRA-like payoff linked to forward vs realized short/roll rate</li>
 </ul>
-<p>This structure is simple enough for transparency but still captures the core IRRBB mechanism:
-changes in the yield curve shift the rates that drive asset income and liability expense, and hedging offsets part of that sensitivity.</p>
+&lt;p&gt;This structure is simple enough for transparency but still captures the core IRRBB mechanism:
+changes in the yield curve shift the rates that drive asset income and liability expense, and hedging offsets part of that sensitivity.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -13351,7 +13389,7 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[59]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -13363,34 +13401,52 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>lambda_u</th>
-<th>lambda_h</th>
-<th>Hx_hedge_sensitivity</th>
-<th>K_max_abs</th>
-<th>std_unhedged</th>
-<th>std_hedged</th>
-<th>std_reduction_%</th>
-<th>p05_unhedged</th>
-<th>p05_hedged</th>
-<th>min_unhedged</th>
-<th>min_hedged</th>
-<th>mean_unhedged</th>
-<th>mean_hedged</th>
-<th>mean_abs_h</th>
-<th>max_abs_h</th>
-<th>mean_abs_u</th>
-<th>max_abs_u</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>0.0001</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;lambda_u&lt;/th&gt;
+      &lt;th&gt;lambda_h&lt;/th&gt;
+      &lt;th&gt;Hx_hedge_sensitivity&lt;/th&gt;
+      &lt;th&gt;K_max_abs&lt;/th&gt;
+      &lt;th&gt;std_unhedged&lt;/th&gt;
+      &lt;th&gt;std_hedged&lt;/th&gt;
+      &lt;th&gt;std_reduction_%&lt;/th&gt;
+      &lt;th&gt;p05_unhedged&lt;/th&gt;
+      &lt;th&gt;p05_hedged&lt;/th&gt;
+      &lt;th&gt;min_unhedged&lt;/th&gt;
+      &lt;th&gt;min_hedged&lt;/th&gt;
+      &lt;th&gt;mean_unhedged&lt;/th&gt;
+      &lt;th&gt;mean_hedged&lt;/th&gt;
+      &lt;th&gt;mean_abs_h&lt;/th&gt;
+      &lt;th&gt;max_abs_h&lt;/th&gt;
+      &lt;th&gt;mean_abs_u&lt;/th&gt;
+      &lt;th&gt;max_abs_u&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th&gt;0&lt;/th&gt;
+      
+      &lt;th&gt;1&lt;/th&gt;
+      
+      &lt;th&gt;2&lt;/th&gt;
+      
+      &lt;th&gt;3&lt;/th&gt;
+      
+      &lt;th&gt;4&lt;/th&gt;
+      
+      &lt;th&gt;5&lt;/th&gt;
+      
+      &lt;th&gt;6&lt;/th&gt;
+      
+      &lt;th&gt;7&lt;/th&gt;
+      
+      &lt;th&gt;8&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr><tr><td>0.0001</td>
 <td>1.000000e-05</td>
 <td>0.0</td>
 <td>0.270602</td>
@@ -13408,9 +13464,7 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 <td>0.095120</td>
 <td>11.119507</td>
 </tr>
-<tr>
-<th>1</th>
-<td>0.0001</td>
+<tr><td>0.0001</td>
 <td>1.000000e-06</td>
 <td>0.0</td>
 <td>0.096875</td>
@@ -13428,9 +13482,7 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 <td>0.095120</td>
 <td>3.980783</td>
 </tr>
-<tr>
-<th>2</th>
-<td>0.0010</td>
+<tr><td>0.0010</td>
 <td>1.000000e-05</td>
 <td>0.0</td>
 <td>0.095302</td>
@@ -13448,9 +13500,7 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 <td>0.095120</td>
 <td>3.916112</td>
 </tr>
-<tr>
-<th>3</th>
-<td>0.0001</td>
+<tr><td>0.0001</td>
 <td>1.000000e-07</td>
 <td>0.0</td>
 <td>0.036614</td>
@@ -13468,9 +13518,7 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 <td>0.095120</td>
 <td>1.504539</td>
 </tr>
-<tr>
-<th>4</th>
-<td>0.0010</td>
+<tr><td>0.0010</td>
 <td>1.000000e-06</td>
 <td>0.0</td>
 <td>0.031721</td>
@@ -13488,9 +13536,7 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 <td>0.095120</td>
 <td>1.303452</td>
 </tr>
-<tr>
-<th>5</th>
-<td>0.0100</td>
+<tr><td>0.0100</td>
 <td>1.000000e-05</td>
 <td>0.0</td>
 <td>0.031187</td>
@@ -13508,9 +13554,7 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 <td>0.095120</td>
 <td>1.281514</td>
 </tr>
-<tr>
-<th>6</th>
-<td>0.0010</td>
+<tr><td>0.0010</td>
 <td>1.000000e-07</td>
 <td>0.0</td>
 <td>0.011727</td>
@@ -13528,9 +13572,7 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 <td>0.094538</td>
 <td>0.481883</td>
 </tr>
-<tr>
-<th>7</th>
-<td>0.0100</td>
+<tr><td>0.0100</td>
 <td>1.000000e-06</td>
 <td>0.0</td>
 <td>0.010142</td>
@@ -13548,9 +13590,7 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 <td>0.093956</td>
 <td>0.416755</td>
 </tr>
-<tr>
-<th>8</th>
-<td>0.0100</td>
+<tr><td>0.0100</td>
 <td>1.000000e-07</td>
 <td>0.0</td>
 <td>0.003723</td>
@@ -13567,9 +13607,7 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 <td>32.890339</td>
 <td>0.076135</td>
 <td>0.153000</td>
-</tr>
-</tbody>
-</table>
+</tr>&lt;/tbody&gt;</table>
 </div>
 </div>
 </div>
@@ -13651,20 +13689,21 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Stress-testing-protocol">Stress testing protocol<a class="anchor-link" href="#Stress-testing-protocol">¶</a></h2><p>We evaluate policies under:</p>
+&lt;h2 id="Stress-testing-protocol"&gt;Stress testing protocol<a class="anchor-link" href="#Stress-testing-protocol">¶</a>&lt;/h2&gt;&lt;p&gt;We evaluate policies under:&lt;/p&gt;
 <ul>
 <li><strong>baseline</strong> (historical smoothed factors),</li>
 <li><strong>parallel shock</strong> (+200bp level),</li>
 <li><strong>high-vol regime</strong> (scaled factor innovations),</li>
 <li><strong>steepener</strong> scenario.</li>
 </ul>
-<p>For each scenario we compare:</p>
+&lt;p&gt;For each scenario we compare:&lt;/p&gt;
 <ul>
 <li>unhedged NII path,</li>
 <li>LQ-hedged NII path,</li>
 <li>and later RL-hedged NII path.</li>
 </ul>
-<p>Metrics include volatility and downside (e.g., 5% quantile), plus turnover/inventory proxies.</p>
+&lt;p&gt;Metrics include volatility and downside (e.g., 5% quantile), plus turnover/inventory proxies.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -13731,7 +13770,7 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[62]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -13743,33 +13782,41 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>scenario</th>
-<th>lambda_u</th>
-<th>lambda_h</th>
-<th>std_unhedged</th>
-<th>std_hedged</th>
-<th>std_reduction_%</th>
-<th>p05_unhedged</th>
-<th>p05_hedged</th>
-<th>min_unhedged</th>
-<th>min_hedged</th>
-<th>mean_unhedged</th>
-<th>mean_hedged</th>
-<th>mean_abs_h</th>
-<th>max_abs_h</th>
-<th>mean_abs_u</th>
-<th>max_abs_u</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>baseline (smoothed)</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;scenario&lt;/th&gt;
+      &lt;th&gt;lambda_u&lt;/th&gt;
+      &lt;th&gt;lambda_h&lt;/th&gt;
+      &lt;th&gt;std_unhedged&lt;/th&gt;
+      &lt;th&gt;std_hedged&lt;/th&gt;
+      &lt;th&gt;std_reduction_%&lt;/th&gt;
+      &lt;th&gt;p05_unhedged&lt;/th&gt;
+      &lt;th&gt;p05_hedged&lt;/th&gt;
+      &lt;th&gt;min_unhedged&lt;/th&gt;
+      &lt;th&gt;min_hedged&lt;/th&gt;
+      &lt;th&gt;mean_unhedged&lt;/th&gt;
+      &lt;th&gt;mean_hedged&lt;/th&gt;
+      &lt;th&gt;mean_abs_h&lt;/th&gt;
+      &lt;th&gt;max_abs_h&lt;/th&gt;
+      &lt;th&gt;mean_abs_u&lt;/th&gt;
+      &lt;th&gt;max_abs_u&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th&gt;0&lt;/th&gt;
+      
+      &lt;th&gt;1&lt;/th&gt;
+      
+      &lt;th&gt;2&lt;/th&gt;
+      
+      &lt;th&gt;3&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr><tr><td>baseline (smoothed)</td>
 <td>0.0001</td>
 <td>1.000000e-07</td>
 <td>0.090352</td>
@@ -13786,9 +13833,7 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 <td>0.09512</td>
 <td>1.504539</td>
 </tr>
-<tr>
-<th>1</th>
-<td>stress: +200bp parallel</td>
+<tr><td>stress: +200bp parallel</td>
 <td>0.0001</td>
 <td>1.000000e-07</td>
 <td>0.020020</td>
@@ -13805,9 +13850,7 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 <td>0.09512</td>
 <td>1.504539</td>
 </tr>
-<tr>
-<th>2</th>
-<td>stress: bear steepener</td>
+<tr><td>stress: bear steepener</td>
 <td>0.0001</td>
 <td>1.000000e-07</td>
 <td>0.016309</td>
@@ -13824,9 +13867,7 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 <td>0.09512</td>
 <td>1.504539</td>
 </tr>
-<tr>
-<th>3</th>
-<td>stress: high vol x3</td>
+<tr><td>stress: high vol x3</td>
 <td>0.0001</td>
 <td>1.000000e-07</td>
 <td>0.059293</td>
@@ -13842,9 +13883,7 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 <td>41.091748</td>
 <td>0.09512</td>
 <td>1.504539</td>
-</tr>
-</tbody>
-</table>
+</tr>&lt;/tbody&gt;</table>
 </div>
 </div>
 </div>
@@ -13857,13 +13896,13 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Policy-evaluation-on-identical-scenarios">Policy evaluation on identical scenarios<a class="anchor-link" href="#Policy-evaluation-on-identical-scenarios">¶</a></h2><p>To make the comparison fair, policies are evaluated on the <strong>same underlying factor/yield paths</strong>.</p>
-<p>This isolates the policy effect:</p>
+&lt;h2 id="Policy-evaluation-on-identical-scenarios"&gt;Policy evaluation on identical scenarios<a class="anchor-link" href="#Policy-evaluation-on-identical-scenarios">¶</a>&lt;/h2&gt;&lt;p&gt;To make the comparison fair, policies are evaluated on the <strong>same underlying factor/yield paths</strong>.&lt;/p&gt;
+&lt;p&gt;This isolates the policy effect:&lt;/p&gt;
 <ul>
 <li>differences in NII are due to hedging decisions,</li>
 <li>not due to different simulated market paths.</li>
 </ul>
-<p>This section produces the main “headline” plots:</p>
+&lt;p&gt;This section produces the main “headline” plots:&lt;/p&gt;
 <ul>
 <li>NII trajectories under stress,</li>
 <li>hedge inventory paths,</li>
@@ -13957,34 +13996,34 @@ X_ref: [ 0.06421823 -0.03616098 -0.02123435]
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Part-IV:-Reinforcement-Learning">Part IV: Reinforcement Learning<a class="anchor-link" href="#Part-IV:-Reinforcement-Learning">¶</a></h1><h2 id="Beyond-Quadratic-Costs:-L1-Transaction-Costs-and-the-Transition-to-Reinforcement-Learning">Beyond Quadratic Costs: L1 Transaction Costs and the Transition to Reinforcement Learning<a class="anchor-link" href="#Beyond-Quadratic-Costs:-L1-Transaction-Costs-and-the-Transition-to-Reinforcement-Learning">¶</a></h2><p>The linear–quadratic (LQ) control framework provides a powerful and interpretable benchmark for dynamic hedging when costs are quadratic. However, real-world hedging problems often involve <strong>non-quadratic frictions</strong>, most notably <strong>transaction costs that scale linearly with trade size</strong>.</p>
-<p>This section explains how introducing L1 costs fundamentally changes the control problem and motivates the use of reinforcement learning.</p>
-<hr/>
-<h2 id="Economic-Motivation-for-L1-Transaction-Costs">Economic Motivation for L1 Transaction Costs<a class="anchor-link" href="#Economic-Motivation-for-L1-Transaction-Costs">¶</a></h2><p>Quadratic trading costs imply that:</p>
+&lt;h1 id="Part-IV:-Reinforcement-Learning"&gt;Part IV: Reinforcement Learning<a class="anchor-link" href="#Part-IV:-Reinforcement-Learning">¶</a>&lt;/h1&gt;&lt;h2 id="Beyond-Quadratic-Costs:-L1-Transaction-Costs-and-the-Transition-to-Reinforcement-Learning"&gt;Beyond Quadratic Costs: L1 Transaction Costs and the Transition to Reinforcement Learning<a class="anchor-link" href="#Beyond-Quadratic-Costs:-L1-Transaction-Costs-and-the-Transition-to-Reinforcement-Learning">¶</a>&lt;/h2&gt;&lt;p&gt;The linear–quadratic (LQ) control framework provides a powerful and interpretable benchmark for dynamic hedging when costs are quadratic. However, real-world hedging problems often involve <strong>non-quadratic frictions</strong>, most notably <strong>transaction costs that scale linearly with trade size</strong>.&lt;/p&gt;
+&lt;p&gt;This section explains how introducing L1 costs fundamentally changes the control problem and motivates the use of reinforcement learning.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="Economic-Motivation-for-L1-Transaction-Costs"&gt;Economic Motivation for L1 Transaction Costs<a class="anchor-link" href="#Economic-Motivation-for-L1-Transaction-Costs">¶</a>&lt;/h2&gt;&lt;p&gt;Quadratic trading costs imply that:&lt;/p&gt;
 <ul>
 <li>small trades are almost free,</li>
 <li>frequent rebalancing is optimal,</li>
 <li>hedge adjustments are smooth and continuous.</li>
 </ul>
-<p>In practice, interest rate hedging instruments (IRS, FRA, swaps) are subject to:</p>
+&lt;p&gt;In practice, interest rate hedging instruments (IRS, FRA, swaps) are subject to:&lt;/p&gt;
 <ul>
 <li>bid–ask spreads,</li>
 <li>brokerage fees,</li>
 <li>balance-sheet and operational costs.</li>
 </ul>
-<p>These costs are better approximated by <strong>linear (L1) penalties</strong>:
-$
+&lt;p&gt;These costs are better approximated by <strong>linear (L1) penalties</strong>:
+$$
 \text{Transaction cost at time } t \;\propto\; |u_t|
-$</p>
-<p>Economically, this means:</p>
+$$&lt;/p&gt;
+&lt;p&gt;Economically, this means:&lt;/p&gt;
 <ul>
 <li>each trade incurs a fixed marginal cost,</li>
 <li>small trades are not necessarily cheap,</li>
 <li>inactivity can be optimal over wide regions of the state space.</li>
 </ul>
-<hr/>
-<h2 id="The-Control-Problem-with-L1-Costs">The Control Problem with L1 Costs<a class="anchor-link" href="#The-Control-Problem-with-L1-Costs">¶</a></h2><p>Replacing the quadratic trading penalty with an L1 penalty leads to the objective:
-$
+&lt;hr /&gt;
+&lt;h2 id="The-Control-Problem-with-L1-Costs"&gt;The Control Problem with L1 Costs<a class="anchor-link" href="#The-Control-Problem-with-L1-Costs">¶</a>&lt;/h2&gt;&lt;p&gt;Replacing the quadratic trading penalty with an L1 penalty leads to the objective:
+$$
 \min_{u_t}
 \mathbb{E}
 \sum_{t=0}^{\infty}
@@ -13995,90 +14034,91 @@ $
 +
 \kappa_u |u_t|
 \right)
-$</p>
-<p>Key differences from the LQ case:</p>
+$$&lt;/p&gt;
+&lt;p&gt;Key differences from the LQ case:&lt;/p&gt;
 <ul>
 <li>the cost function is <strong>non-differentiable</strong> at $u_t = 0$,</li>
 <li>the value function is <strong>no longer quadratic</strong>,</li>
 <li>the optimal policy is <strong>no longer linear</strong> in the state.</li>
 </ul>
-<p>As a result, classical LQ theory no longer applies.</p>
-<hr/>
-<h2 id="What-Breaks-in-Classical-Optimal-Control">What Breaks in Classical Optimal Control<a class="anchor-link" href="#What-Breaks-in-Classical-Optimal-Control">¶</a></h2><p>Under L1 costs:</p>
+&lt;p&gt;As a result, classical LQ theory no longer applies.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="What-Breaks-in-Classical-Optimal-Control"&gt;What Breaks in Classical Optimal Control<a class="anchor-link" href="#What-Breaks-in-Classical-Optimal-Control">¶</a>&lt;/h2&gt;&lt;p&gt;Under L1 costs:&lt;/p&gt;
 <ul>
 <li>the Riccati equation cannot be used,</li>
 <li>there is no closed-form optimal feedback matrix,</li>
 <li>certainty equivalence fails.</li>
 </ul>
-<p>Most importantly:</p>
+&lt;p&gt;Most importantly:&lt;/p&gt;
 <blockquote>
-<p><strong>The optimal policy develops endogenous “no-trade regions.”</strong></p>
+&lt;p&gt;<strong>The optimal policy develops endogenous “no-trade regions.”</strong>&lt;/p&gt;
 </blockquote>
-<p>That is, there exist states where:
-$
+&lt;p&gt;That is, there exist states where:
+$$
 u_t^\star = 0
-$
-even though the hedge is imperfect.</p>
-<p>This behavior is well known in impulse control and inventory management problems, but it cannot be represented by linear feedback rules.</p>
-<hr/>
-<h2 id="State-Space-Dynamics-Remain-Valid">State-Space Dynamics Remain Valid<a class="anchor-link" href="#State-Space-Dynamics-Remain-Valid">¶</a></h2><p>Crucially, introducing L1 costs does <strong>not</strong> invalidate the state-space model.</p>
-<p>The dynamics remain:
-$
+$$
+even though the hedge is imperfect.&lt;/p&gt;
+&lt;p&gt;This behavior is well known in impulse control and inventory management problems, but it cannot be represented by linear feedback rules.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="State-Space-Dynamics-Remain-Valid"&gt;State-Space Dynamics Remain Valid<a class="anchor-link" href="#State-Space-Dynamics-Remain-Valid">¶</a>&lt;/h2&gt;&lt;p&gt;Crucially, introducing L1 costs does <strong>not</strong> invalidate the state-space model.&lt;/p&gt;
+&lt;p&gt;The dynamics remain:
+$$
 \mathbf{s}_{t+1} = A \mathbf{s}_t + B u_t + \boldsymbol{\xi}_{t+1}
-$</p>
-<p>where:</p>
+$$&lt;/p&gt;
+&lt;p&gt;where:&lt;/p&gt;
 <ul>
 <li>$\mathbf{s}_t = (L_t, S_t, C_t, h_t)$,</li>
 <li>yield-curve factors evolve exogenously under AFNS dynamics,</li>
 <li>control affects only the hedge inventory.</li>
 </ul>
-<p>What changes is <strong>not the system</strong>, but the <strong>optimization problem defined on top of it</strong>.</p>
-<hr/>
-<h2 id="Why-Reinforcement-Learning-Is-Appropriate">Why Reinforcement Learning Is Appropriate<a class="anchor-link" href="#Why-Reinforcement-Learning-Is-Appropriate">¶</a></h2><p>Reinforcement learning (RL) solves dynamic decision problems by:</p>
+&lt;p&gt;What changes is <strong>not the system</strong>, but the <strong>optimization problem defined on top of it</strong>.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="Why-Reinforcement-Learning-Is-Appropriate"&gt;Why Reinforcement Learning Is Appropriate<a class="anchor-link" href="#Why-Reinforcement-Learning-Is-Appropriate">¶</a>&lt;/h2&gt;&lt;p&gt;Reinforcement learning (RL) solves dynamic decision problems by:&lt;/p&gt;
 <ul>
 <li>interacting with the environment,</li>
 <li>learning value functions or policies directly,</li>
 <li>without requiring smoothness or quadratic structure.</li>
 </ul>
-<p>In this project, RL is applied to:</p>
+&lt;p&gt;In this project, RL is applied to:&lt;/p&gt;
 <ul>
 <li>the same AFNS-based state-space system,</li>
 <li>the same NII definition,</li>
 <li>but with an objective that includes L1 transaction costs.</li>
 </ul>
-<p>This allows the agent to:</p>
+&lt;p&gt;This allows the agent to:&lt;/p&gt;
 <ul>
 <li>learn sparse trading policies,</li>
 <li>internalize fixed trading frictions,</li>
 <li>and optimally balance NII risk against trading intensity.</li>
 </ul>
-<hr/>
-<h2 id="Relationship-Between-LQ-Control-and-RL">Relationship Between LQ Control and RL<a class="anchor-link" href="#Relationship-Between-LQ-Control-and-RL">¶</a></h2><p>The L1-RL formulation can be viewed as a <strong>generalization of LQ control</strong>:</p>
+&lt;hr /&gt;
+&lt;h2 id="Relationship-Between-LQ-Control-and-RL"&gt;Relationship Between LQ Control and RL<a class="anchor-link" href="#Relationship-Between-LQ-Control-and-RL">¶</a>&lt;/h2&gt;&lt;p&gt;The L1-RL formulation can be viewed as a <strong>generalization of LQ control</strong>:&lt;/p&gt;
 <ul>
 <li>When transaction costs are quadratic, the optimal RL policy converges toward the LQ solution.</li>
 <li>When costs are linear, RL departs from linear feedback and learns non-smooth, state-dependent rules.</li>
 </ul>
-<p>Thus:</p>
+&lt;p&gt;Thus:&lt;/p&gt;
 <blockquote>
-<p><strong>RL does not replace classical control. It extends it to settings where classical assumptions break down.</strong></p>
+&lt;p&gt;<strong>RL does not replace classical control. It extends it to settings where classical assumptions break down.</strong>&lt;/p&gt;
 </blockquote>
-<hr/>
-<h2 id="Role-in-This-Project">Role in This Project<a class="anchor-link" href="#Role-in-This-Project">¶</a></h2><p>The comparison between LQ control and RL serves a clear purpose:</p>
+&lt;hr /&gt;
+&lt;h2 id="Role-in-This-Project"&gt;Role in This Project<a class="anchor-link" href="#Role-in-This-Project">¶</a>&lt;/h2&gt;&lt;p&gt;The comparison between LQ control and RL serves a clear purpose:&lt;/p&gt;
 <ul>
 <li><strong>LQ control</strong> defines the optimal benchmark under idealized quadratic costs.</li>
 <li><strong>RL with L1 costs</strong> captures realistic trading frictions and balance-sheet considerations.</li>
 <li>The performance gap between the two highlights the economic impact of non-quadratic costs.</li>
 </ul>
-<p>This framework makes it possible to assess <em>when</em> and <em>why</em> more flexible decision rules are required in interest rate risk management.</p>
-<hr/>
-<h2 id="Conceptual-Summary">Conceptual Summary<a class="anchor-link" href="#Conceptual-Summary">¶</a></h2><ul>
+&lt;p&gt;This framework makes it possible to assess <em>when</em> and <em>why</em> more flexible decision rules are required in interest rate risk management.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;h2 id="Conceptual-Summary"&gt;Conceptual Summary<a class="anchor-link" href="#Conceptual-Summary">¶</a>&lt;/h2&gt;<ul>
 <li>The AFNS model provides a coherent state-space environment.</li>
 <li>LQ control is optimal under quadratic costs and serves as a theoretical benchmark.</li>
 <li>L1 transaction costs break the assumptions underlying LQ theory.</li>
 <li>Reinforcement learning naturally handles non-smooth objectives and sparse actions.</li>
 <li>Comparing LQ and RL policies reveals the economic consequences of realistic trading frictions.</li>
 </ul>
-<p>In this sense, reinforcement learning appears not as a black-box alternative, but as the <strong>appropriate solution once the structure of the control problem changes</strong>.</p>
+&lt;p&gt;In this sense, reinforcement learning appears not as a black-box alternative, but as the <strong>appropriate solution once the structure of the control problem changes</strong>.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -14228,21 +14268,22 @@ $</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>In the baseline linear–quadratic setting, classical LQ control has a structural advantage:</p>
+&lt;p&gt;In the baseline linear–quadratic setting, classical LQ control has a structural advantage:&lt;/p&gt;
 <ul>
 <li>linear dynamics,</li>
 <li>quadratic objective,</li>
 <li>continuous actions.</li>
 </ul>
-<p>So it is expected to be near-optimal.</p>
-<p>RL becomes compelling when we introduce realistic features that break LQ assumptions, such as:</p>
+&lt;p&gt;So it is expected to be near-optimal.&lt;/p&gt;
+&lt;p&gt;RL becomes compelling when we introduce realistic features that break LQ assumptions, such as:&lt;/p&gt;
 <ul>
 <li>non-quadratic transaction costs (L1),</li>
 <li>no-trade regions / discrete trading,</li>
 <li>regime switching or nonlinearities,</li>
 <li>tail-risk objectives.</li>
 </ul>
-<p>We start by implementing an RL agent in the same environment, then extend the objective to L1 costs where RL has a fair advantage.</p>
+&lt;p&gt;We start by implementing an RL agent in the same environment, then extend the objective to L1 costs where RL has a fair advantage.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -14490,7 +14531,7 @@ $</p>
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[68]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -14502,28 +14543,34 @@ $</p>
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>scenario</th>
-<th>unhedged_std</th>
-<th>lq_std</th>
-<th>rl_std</th>
-<th>unhedged_p05</th>
-<th>lq_p05</th>
-<th>rl_p05</th>
-<th>lq_turnover</th>
-<th>rl_turnover</th>
-<th>lq_inv</th>
-<th>rl_inv</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>0</th>
-<td>Stress: +200bp parallel</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;scenario&lt;/th&gt;
+      &lt;th&gt;unhedged_std&lt;/th&gt;
+      &lt;th&gt;lq_std&lt;/th&gt;
+      &lt;th&gt;rl_std&lt;/th&gt;
+      &lt;th&gt;unhedged_p05&lt;/th&gt;
+      &lt;th&gt;lq_p05&lt;/th&gt;
+      &lt;th&gt;rl_p05&lt;/th&gt;
+      &lt;th&gt;lq_turnover&lt;/th&gt;
+      &lt;th&gt;rl_turnover&lt;/th&gt;
+      &lt;th&gt;lq_inv&lt;/th&gt;
+      &lt;th&gt;rl_inv&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th&gt;0&lt;/th&gt;
+      
+      &lt;th&gt;1&lt;/th&gt;
+      
+      &lt;th&gt;2&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr><tr><td>Stress: +200bp parallel</td>
 <td>0.020020</td>
 <td>0.011062</td>
 <td>0.019268</td>
@@ -14535,9 +14582,7 @@ $</p>
 <td>38.499854</td>
 <td>7.019088</td>
 </tr>
-<tr>
-<th>1</th>
-<td>Stress: bear steepener</td>
+<tr><td>Stress: bear steepener</td>
 <td>0.016309</td>
 <td>0.010078</td>
 <td>0.007442</td>
@@ -14549,9 +14594,7 @@ $</p>
 <td>38.499854</td>
 <td>23.686186</td>
 </tr>
-<tr>
-<th>2</th>
-<td>Stress: high vol x3</td>
+<tr><td>Stress: high vol x3</td>
 <td>0.059293</td>
 <td>0.032767</td>
 <td>0.053273</td>
@@ -14562,9 +14605,7 @@ $</p>
 <td>1.836452</td>
 <td>38.499854</td>
 <td>13.353505</td>
-</tr>
-</tbody>
-</table>
+</tr>&lt;/tbody&gt;</table>
 </div>
 </div>
 </div>
@@ -14619,17 +14660,18 @@ $</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="L1-transaction-costs-(bid%E2%80%93ask-/-fees):-a-realistic-non-quadratic-objective">L1 transaction costs (bid–ask / fees): a realistic non-quadratic objective<a class="anchor-link" href="#L1-transaction-costs-(bid%E2%80%93ask-/-fees):-a-realistic-non-quadratic-objective">¶</a></h2><p>We replace the quadratic turnover penalty with an L1 cost:</p>
-<p>$
+&lt;h2 id="L1-transaction-costs-(bid%E2%80%93ask-/-fees):-a-realistic-non-quadratic-objective"&gt;L1 transaction costs (bid–ask / fees): a realistic non-quadratic objective<a class="anchor-link" href="#L1-transaction-costs-(bid%E2%80%93ask-/-fees):-a-realistic-non-quadratic-objective">¶</a>&lt;/h2&gt;&lt;p&gt;We replace the quadratic turnover penalty with an L1 cost:&lt;/p&gt;
+&lt;p&gt;$$
 \text{Cost}_t = \text{NII}_{t+1}^2 + \lambda_h h_t^2 + \kappa_u |u_t|
-$</p>
-<p>This change is small but economically meaningful:</p>
+$$&lt;/p&gt;
+&lt;p&gt;This change is small but economically meaningful:&lt;/p&gt;
 <ul>
 <li>trading a little still costs something (no smooth quadratic approximation),</li>
 <li>optimal behavior often includes “no-trade” regions,</li>
 <li>LQ is no longer optimal because the objective is not quadratic.</li>
 </ul>
-<p>This is the key reason RL is included: it can learn sparse trading and inventory-aware behavior under realistic frictions.</p>
+&lt;p&gt;This is the key reason RL is included: it can learn sparse trading and inventory-aware behavior under realistic frictions.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -15311,7 +15353,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -15323,41 +15365,61 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th></th>
-<th>std_NII</th>
-<th>p05_NII</th>
-<th>min_NII</th>
-<th>mean_NII</th>
-<th>mean_abs_u</th>
-<th>max_abs_u</th>
-<th>mean_abs_h</th>
-<th>max_abs_h</th>
-<th>L1_cost</th>
-</tr>
-<tr>
-<th>scenario</th>
-<th>policy</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th rowspan="3" valign="top">Baseline (smoothed)</th>
-<th>LQ (L2)</th>
-<td>0.034194</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;std_NII&lt;/th&gt;
+      &lt;th&gt;p05_NII&lt;/th&gt;
+      &lt;th&gt;min_NII&lt;/th&gt;
+      &lt;th&gt;mean_NII&lt;/th&gt;
+      &lt;th&gt;mean_abs_u&lt;/th&gt;
+      &lt;th&gt;max_abs_u&lt;/th&gt;
+      &lt;th&gt;mean_abs_h&lt;/th&gt;
+      &lt;th&gt;max_abs_h&lt;/th&gt;
+      &lt;th&gt;L1_cost&lt;/th&gt;
+    
+      &lt;th&gt;scenario&lt;/th&gt;
+      &lt;th&gt;policy&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th rowspan="3" valign="top"&gt;Baseline (smoothed)&lt;/th&gt;
+      &lt;th&gt;LQ (L2)&lt;/th&gt;
+      
+      &lt;th&gt;RL (L1)&lt;/th&gt;
+      
+      &lt;th&gt;Unhedged&lt;/th&gt;
+      
+      &lt;th rowspan="3" valign="top"&gt;Stress: +200bp parallel&lt;/th&gt;
+      &lt;th&gt;LQ (L2)&lt;/th&gt;
+      
+      &lt;th&gt;RL (L1)&lt;/th&gt;
+      
+      &lt;th&gt;Unhedged&lt;/th&gt;
+      
+      &lt;th rowspan="3" valign="top"&gt;Stress: high vol x3&lt;/th&gt;
+      &lt;th&gt;LQ (L2)&lt;/th&gt;
+      
+      &lt;th&gt;RL (L1)&lt;/th&gt;
+      
+      &lt;th&gt;Unhedged&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr>
+<tr></tr><tr><td>0.034194</td>
 <td>-0.131285</td>
 <td>-0.267363</td>
 <td>-0.087425</td>
@@ -15367,9 +15429,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>41.091748</td>
 <td>0.008994</td>
 </tr>
-<tr>
-<th>RL (L1)</th>
-<td>0.024854</td>
+<tr><td>0.024854</td>
 <td>-0.113054</td>
 <td>-0.267363</td>
 <td>-0.073811</td>
@@ -15379,9 +15439,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>53.488478</td>
 <td>0.006431</td>
 </tr>
-<tr>
-<th>Unhedged</th>
-<td>0.090352</td>
+<tr><td>0.090352</td>
 <td>-0.214973</td>
 <td>-0.281366</td>
 <td>-0.080764</td>
@@ -15391,10 +15449,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>0.000000</td>
 <td>0.014686</td>
 </tr>
-<tr>
-<th rowspan="3" valign="top">Stress: +200bp parallel</th>
-<th>LQ (L2)</th>
-<td>0.011062</td>
+<tr><td>0.011062</td>
 <td>-0.088227</td>
 <td>-0.147521</td>
 <td>-0.081304</td>
@@ -15404,9 +15459,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>41.091748</td>
 <td>0.006914</td>
 </tr>
-<tr>
-<th>RL (L1)</th>
-<td>0.008841</td>
+<tr><td>0.008841</td>
 <td>-0.086189</td>
 <td>-0.147521</td>
 <td>-0.077409</td>
@@ -15416,9 +15469,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>38.595587</td>
 <td>0.006233</td>
 </tr>
-<tr>
-<th>Unhedged</th>
-<td>0.020020</td>
+<tr><td>0.020020</td>
 <td>-0.108548</td>
 <td>-0.147521</td>
 <td>-0.062789</td>
@@ -15428,10 +15479,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>0.000000</td>
 <td>0.004343</td>
 </tr>
-<tr>
-<th rowspan="3" valign="top">Stress: high vol x3</th>
-<th>LQ (L2)</th>
-<td>0.032767</td>
+<tr><td>0.032767</td>
 <td>-0.169675</td>
 <td>-0.197051</td>
 <td>-0.101848</td>
@@ -15441,9 +15489,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>41.091748</td>
 <td>0.011628</td>
 </tr>
-<tr>
-<th>RL (L1)</th>
-<td>0.035016</td>
+<tr><td>0.035016</td>
 <td>-0.177900</td>
 <td>-0.201576</td>
 <td>-0.098451</td>
@@ -15453,9 +15499,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>54.273592</td>
 <td>0.011284</td>
 </tr>
-<tr>
-<th>Unhedged</th>
-<td>0.059293</td>
+<tr><td>0.059293</td>
 <td>-0.188907</td>
 <td>-0.230237</td>
 <td>-0.095596</td>
@@ -15464,9 +15508,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>0.000000</td>
 <td>0.000000</td>
 <td>0.012654</td>
-</tr>
-</tbody>
-</table>
+</tr>&lt;/tbody&gt;</table>
 </div>
 </div>
 </div>
@@ -15481,7 +15523,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -15493,41 +15535,61 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th></th>
-<th>std_NII</th>
-<th>p05_NII</th>
-<th>min_NII</th>
-<th>mean_NII</th>
-<th>mean_abs_u</th>
-<th>max_abs_u</th>
-<th>mean_abs_h</th>
-<th>max_abs_h</th>
-<th>L1_cost</th>
-</tr>
-<tr>
-<th>scenario</th>
-<th>policy</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th rowspan="3" valign="top">Baseline (smoothed)</th>
-<th>LQ (L2)</th>
-<td>37.844999</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;std_NII&lt;/th&gt;
+      &lt;th&gt;p05_NII&lt;/th&gt;
+      &lt;th&gt;min_NII&lt;/th&gt;
+      &lt;th&gt;mean_NII&lt;/th&gt;
+      &lt;th&gt;mean_abs_u&lt;/th&gt;
+      &lt;th&gt;max_abs_u&lt;/th&gt;
+      &lt;th&gt;mean_abs_h&lt;/th&gt;
+      &lt;th&gt;max_abs_h&lt;/th&gt;
+      &lt;th&gt;L1_cost&lt;/th&gt;
+    
+      &lt;th&gt;scenario&lt;/th&gt;
+      &lt;th&gt;policy&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th rowspan="3" valign="top"&gt;Baseline (smoothed)&lt;/th&gt;
+      &lt;th&gt;LQ (L2)&lt;/th&gt;
+      
+      &lt;th&gt;RL (L1)&lt;/th&gt;
+      
+      &lt;th&gt;Unhedged&lt;/th&gt;
+      
+      &lt;th rowspan="3" valign="top"&gt;Stress: +200bp parallel&lt;/th&gt;
+      &lt;th&gt;LQ (L2)&lt;/th&gt;
+      
+      &lt;th&gt;RL (L1)&lt;/th&gt;
+      
+      &lt;th&gt;Unhedged&lt;/th&gt;
+      
+      &lt;th rowspan="3" valign="top"&gt;Stress: high vol x3&lt;/th&gt;
+      &lt;th&gt;LQ (L2)&lt;/th&gt;
+      
+      &lt;th&gt;RL (L1)&lt;/th&gt;
+      
+      &lt;th&gt;Unhedged&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr>
+<tr></tr><tr><td>37.844999</td>
 <td>61.070514</td>
 <td>95.023371</td>
 <td>108.247757</td>
@@ -15537,9 +15599,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>inf</td>
 <td>61.239919</td>
 </tr>
-<tr>
-<th>RL (L1)</th>
-<td>27.508079</td>
+<tr><td>27.508079</td>
 <td>52.589671</td>
 <td>95.023371</td>
 <td>91.390947</td>
@@ -15549,9 +15609,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>inf</td>
 <td>43.788940</td>
 </tr>
-<tr>
-<th>Unhedged</th>
-<td>100.000000</td>
+<tr><td>100.000000</td>
 <td>100.000000</td>
 <td>100.000000</td>
 <td>100.000000</td>
@@ -15561,10 +15619,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>NaN</td>
 <td>100.000000</td>
 </tr>
-<tr>
-<th rowspan="3" valign="top">Stress: +200bp parallel</th>
-<th>LQ (L2)</th>
-<td>55.251811</td>
+<tr><td>55.251811</td>
 <td>81.279512</td>
 <td>100.000000</td>
 <td>129.487453</td>
@@ -15574,9 +15629,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>inf</td>
 <td>159.192269</td>
 </tr>
-<tr>
-<th>RL (L1)</th>
-<td>44.157799</td>
+<tr><td>44.157799</td>
 <td>79.402264</td>
 <td>100.000000</td>
 <td>123.283909</td>
@@ -15586,9 +15639,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>inf</td>
 <td>143.511067</td>
 </tr>
-<tr>
-<th>Unhedged</th>
-<td>100.000000</td>
+<tr><td>100.000000</td>
 <td>100.000000</td>
 <td>100.000000</td>
 <td>100.000000</td>
@@ -15598,10 +15649,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>NaN</td>
 <td>100.000000</td>
 </tr>
-<tr>
-<th rowspan="3" valign="top">Stress: high vol x3</th>
-<th>LQ (L2)</th>
-<td>55.263751</td>
+<tr><td>55.263751</td>
 <td>89.819266</td>
 <td>85.586050</td>
 <td>106.539481</td>
@@ -15611,9 +15659,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>inf</td>
 <td>91.891075</td>
 </tr>
-<tr>
-<th>RL (L1)</th>
-<td>59.056446</td>
+<tr><td>59.056446</td>
 <td>94.173220</td>
 <td>87.551192</td>
 <td>102.986308</td>
@@ -15623,9 +15669,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>inf</td>
 <td>89.173138</td>
 </tr>
-<tr>
-<th>Unhedged</th>
-<td>100.000000</td>
+<tr><td>100.000000</td>
 <td>100.000000</td>
 <td>100.000000</td>
 <td>100.000000</td>
@@ -15634,9 +15678,7 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 <td>NaN</td>
 <td>NaN</td>
 <td>100.000000</td>
-</tr>
-</tbody>
-</table>
+</tr>&lt;/tbody&gt;</table>
 </div>
 </div>
 </div>
@@ -15685,11 +15727,12 @@ C:\Users\thoma\AppData\Local\Temp\ipykernel_24368\1485188669.py:85: RuntimeWarni
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Monte-Carlo-stress-testing">Monte-Carlo stress testing<a class="anchor-link" href="#Monte-Carlo-stress-testing">¶</a></h2><p>The single deterministic stress paths above propagate <code>X_{t+1} = c + Phi X_t</code> with <strong>no
+&lt;h2 id="Monte-Carlo-stress-testing"&gt;Monte-Carlo stress testing<a class="anchor-link" href="#Monte-Carlo-stress-testing">¶</a>&lt;/h2&gt;&lt;p&gt;The single deterministic stress paths above propagate <code>X_{t+1} = c + Phi X_t</code> with <strong>no
 innovation noise</strong>, so <code>std(NII)</code> over one path measures shock decay, not risk. Below we draw
 many noisy factor paths per scenario (persistent initial shock + ongoing <code>N(0, vol_scale*Sigma)</code>
 innovations), evaluate Unhedged / LQ / RL on each, and report the <strong>distribution</strong> of NII risk
-with bootstrap 95% confidence intervals and pooled tail metrics (5% quantile, CVaR-5%).</p>
+with bootstrap 95% confidence intervals and pooled tail metrics (5% quantile, CVaR-5%).&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -15844,7 +15887,7 @@ Baseline  (N=200 paths)
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -15856,58 +15899,58 @@ Baseline  (N=200 paths)
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>mean_std_NII</th>
-<th>std_CI_low</th>
-<th>std_CI_high</th>
-<th>p05_NII</th>
-<th>CVaR05_NII</th>
-<th>mean_turnover</th>
-</tr>
-<tr>
-<th>policy</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>Unhedged</th>
-<td>0.059981</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;mean_std_NII&lt;/th&gt;
+      &lt;th&gt;std_CI_low&lt;/th&gt;
+      &lt;th&gt;std_CI_high&lt;/th&gt;
+      &lt;th&gt;p05_NII&lt;/th&gt;
+      &lt;th&gt;CVaR05_NII&lt;/th&gt;
+      &lt;th&gt;mean_turnover&lt;/th&gt;
+    
+      &lt;th&gt;policy&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th&gt;Unhedged&lt;/th&gt;
+      
+      &lt;th&gt;LQ (L2)&lt;/th&gt;
+      
+      &lt;th&gt;RL (L1)&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr>
+<tr></tr><tr><td>0.059981</td>
 <td>0.057534</td>
 <td>0.062452</td>
 <td>-0.187804</td>
 <td>-0.222097</td>
 <td>0.000000</td>
 </tr>
-<tr>
-<th>LQ (L2)</th>
-<td>0.020693</td>
+<tr><td>0.020693</td>
 <td>0.019954</td>
 <td>0.021468</td>
 <td>-0.124007</td>
 <td>-0.134397</td>
 <td>0.095120</td>
 </tr>
-<tr>
-<th>RL (L1)</th>
-<td>0.018174</td>
+<tr><td>0.018174</td>
 <td>0.017604</td>
 <td>0.018747</td>
 <td>-0.114930</td>
 <td>-0.123653</td>
 <td>0.432978</td>
-</tr>
-</tbody>
-</table>
+</tr>&lt;/tbody&gt;</table>
 </div>
 </div>
 </div>
@@ -15923,7 +15966,7 @@ Stress: +200bp parallel  (N=200 paths)
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -15935,58 +15978,58 @@ Stress: +200bp parallel  (N=200 paths)
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>mean_std_NII</th>
-<th>std_CI_low</th>
-<th>std_CI_high</th>
-<th>p05_NII</th>
-<th>CVaR05_NII</th>
-<th>mean_turnover</th>
-</tr>
-<tr>
-<th>policy</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>Unhedged</th>
-<td>0.062761</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;mean_std_NII&lt;/th&gt;
+      &lt;th&gt;std_CI_low&lt;/th&gt;
+      &lt;th&gt;std_CI_high&lt;/th&gt;
+      &lt;th&gt;p05_NII&lt;/th&gt;
+      &lt;th&gt;CVaR05_NII&lt;/th&gt;
+      &lt;th&gt;mean_turnover&lt;/th&gt;
+    
+      &lt;th&gt;policy&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th&gt;Unhedged&lt;/th&gt;
+      
+      &lt;th&gt;LQ (L2)&lt;/th&gt;
+      
+      &lt;th&gt;RL (L1)&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr>
+<tr></tr><tr><td>0.062761</td>
 <td>0.060299</td>
 <td>0.065374</td>
 <td>-0.181598</td>
 <td>-0.214378</td>
 <td>0.00000</td>
 </tr>
-<tr>
-<th>LQ (L2)</th>
-<td>0.023181</td>
+<tr><td>0.023181</td>
 <td>0.022381</td>
 <td>0.023953</td>
 <td>-0.125773</td>
 <td>-0.138188</td>
 <td>0.09512</td>
 </tr>
-<tr>
-<th>RL (L1)</th>
-<td>0.019133</td>
+<tr><td>0.019133</td>
 <td>0.018554</td>
 <td>0.019717</td>
 <td>-0.113787</td>
 <td>-0.123807</td>
 <td>0.43086</td>
-</tr>
-</tbody>
-</table>
+</tr>&lt;/tbody&gt;</table>
 </div>
 </div>
 </div>
@@ -16002,7 +16045,7 @@ Stress: bear steepener  (N=200 paths)
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -16014,58 +16057,58 @@ Stress: bear steepener  (N=200 paths)
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>mean_std_NII</th>
-<th>std_CI_low</th>
-<th>std_CI_high</th>
-<th>p05_NII</th>
-<th>CVaR05_NII</th>
-<th>mean_turnover</th>
-</tr>
-<tr>
-<th>policy</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>Unhedged</th>
-<td>0.061748</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;mean_std_NII&lt;/th&gt;
+      &lt;th&gt;std_CI_low&lt;/th&gt;
+      &lt;th&gt;std_CI_high&lt;/th&gt;
+      &lt;th&gt;p05_NII&lt;/th&gt;
+      &lt;th&gt;CVaR05_NII&lt;/th&gt;
+      &lt;th&gt;mean_turnover&lt;/th&gt;
+    
+      &lt;th&gt;policy&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th&gt;Unhedged&lt;/th&gt;
+      
+      &lt;th&gt;LQ (L2)&lt;/th&gt;
+      
+      &lt;th&gt;RL (L1)&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr>
+<tr></tr><tr><td>0.061748</td>
 <td>0.059125</td>
 <td>0.064538</td>
 <td>-0.177427</td>
 <td>-0.211559</td>
 <td>0.000000</td>
 </tr>
-<tr>
-<th>LQ (L2)</th>
-<td>0.022804</td>
+<tr><td>0.022804</td>
 <td>0.021927</td>
 <td>0.023644</td>
 <td>-0.121076</td>
 <td>-0.131687</td>
 <td>0.095120</td>
 </tr>
-<tr>
-<th>RL (L1)</th>
-<td>0.019001</td>
+<tr><td>0.019001</td>
 <td>0.018367</td>
 <td>0.019640</td>
 <td>-0.112508</td>
 <td>-0.121649</td>
 <td>0.435617</td>
-</tr>
-</tbody>
-</table>
+</tr>&lt;/tbody&gt;</table>
 </div>
 </div>
 </div>
@@ -16081,7 +16124,7 @@ Stress: high vol x3  (N=200 paths)
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <div>
-<style scoped="">
+&lt;style scoped&gt;
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -16093,58 +16136,58 @@ Stress: high vol x3  (N=200 paths)
     .dataframe thead th {
         text-align: right;
     }
-</style>
-<table border="1" class="dataframe">
-<thead>
-<tr style="text-align: right;">
-<th></th>
-<th>mean_std_NII</th>
-<th>std_CI_low</th>
-<th>std_CI_high</th>
-<th>p05_NII</th>
-<th>CVaR05_NII</th>
-<th>mean_turnover</th>
-</tr>
-<tr>
-<th>policy</th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th>Unhedged</th>
-<td>0.103814</td>
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;mean_std_NII&lt;/th&gt;
+      &lt;th&gt;std_CI_low&lt;/th&gt;
+      &lt;th&gt;std_CI_high&lt;/th&gt;
+      &lt;th&gt;p05_NII&lt;/th&gt;
+      &lt;th&gt;CVaR05_NII&lt;/th&gt;
+      &lt;th&gt;mean_turnover&lt;/th&gt;
+    
+      &lt;th&gt;policy&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th&gt;Unhedged&lt;/th&gt;
+      
+      &lt;th&gt;LQ (L2)&lt;/th&gt;
+      
+      &lt;th&gt;RL (L1)&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table class="dataframe">&lt;tbody&gt;<tr></tr>
+<tr></tr><tr><td>0.103814</td>
 <td>0.099658</td>
 <td>0.108052</td>
 <td>-0.275759</td>
 <td>-0.335187</td>
 <td>0.000000</td>
 </tr>
-<tr>
-<th>LQ (L2)</th>
-<td>0.035528</td>
+<tr><td>0.035528</td>
 <td>0.034248</td>
 <td>0.036857</td>
 <td>-0.152461</td>
 <td>-0.170352</td>
 <td>0.095120</td>
 </tr>
-<tr>
-<th>RL (L1)</th>
-<td>0.029953</td>
+<tr><td>0.029953</td>
 <td>0.028955</td>
 <td>0.030928</td>
 <td>-0.131485</td>
 <td>-0.147547</td>
 <td>0.656499</td>
-</tr>
-</tbody>
-</table>
+</tr>&lt;/tbody&gt;</table>
 </div>
 </div>
 </div>
@@ -16163,28 +16206,29 @@ Stress: high vol x3  (N=200 paths)
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Does-RL-actually-beat-LQ?-Cost-frontier-sweep-+-multi-seed-robustness">Does RL actually beat LQ? Cost-frontier sweep + multi-seed robustness<a class="anchor-link" href="#Does-RL-actually-beat-LQ?-Cost-frontier-sweep-+-multi-seed-robustness">¶</a></h2><p>The L2 comparison (Section 8) showed RL only <em>ties</em> the LQ controller: with the issue-10
+&lt;h2 id="Does-RL-actually-beat-LQ?-Cost-frontier-sweep-+-multi-seed-robustness"&gt;Does RL actually beat LQ? Cost-frontier sweep + multi-seed robustness<a class="anchor-link" href="#Does-RL-actually-beat-LQ?-Cost-frontier-sweep-+-multi-seed-robustness">¶</a>&lt;/h2&gt;&lt;p&gt;The L2 comparison (Section 8) showed RL only <em>ties</em> the LQ controller: with the issue-10
 swaplet both cut NII std ~66%, but RL traded ~70% more for marginally lower std. That is the
 wrong regime to look for an RL edge, because under a pure quadratic objective the one-step NII
 hedge is essentially <strong>static</strong>: the variance-minimising hedge is the constant ratio
-<code>H_VM</code>, which the Riccati gain already reproduces.</p>
-<p>RL's hypothesised advantage lives under <strong>L1 transaction costs</strong>, where sparse "no-trade-band"
-trading should beat LQ's continuous proportional rebalancing. To test that cleanly we:</p>
+<code>H_VM</code>, which the Riccati gain already reproduces.&lt;/p&gt;
+&lt;p&gt;RL's hypothesised advantage lives under <strong>L1 transaction costs</strong>, where sparse "no-trade-band"
+trading should beat LQ's continuous proportional rebalancing. To test that cleanly we:&lt;/p&gt;
 <ol>
-<li><p><strong>Sweep the L1 trading cost</strong> <code>kappa_u in {3e-4, 1e-3, 3e-3, 1e-2}</code>, retraining SAC (800k
+<li>&lt;p&gt;<strong>Sweep the L1 trading cost</strong> <code>kappa_u in {3e-4, 1e-3, 3e-3, 1e-2}</code>, retraining SAC (800k
 steps) at each point, and compare on the <strong>total L1 economic cost</strong> that <em>both</em> policies
-actually optimise:</p>
-<p>$$ \text{cost} \;=\; \mathbb{E}_t\big[\,(\text{NII}_t-\text{NII}^{*})^2 \;+\; \lambda_h h_t^2 \;+\; \kappa_u\,|u_t|\,\big] $$</p>
-<p>evaluated on a shared set of Monte-Carlo factor paths.</p>
+actually optimise:&lt;/p&gt;
+&lt;p&gt;$$ \text{cost} \;=\; \mathbb{E}_t\big[\,(\text{NII}_t-\text{NII}^{*})^2 \;+\; \lambda_h h_t^2 \;+\; \kappa_u\,|u_t|\,\big] $$&lt;/p&gt;
+&lt;p&gt;evaluated on a shared set of Monte-Carlo factor paths.&lt;/p&gt;
 </li>
-<li><p><strong>Stress-test the apparent winner</strong> with a 3-seed retrain (both env and SAC seeded) at the
-two <code>kappa_u</code> points where RL appeared to win, to separate signal from training noise.</p>
+<li>&lt;p&gt;<strong>Stress-test the apparent winner</strong> with a 3-seed retrain (both env and SAC seeded) at the
+two <code>kappa_u</code> points where RL appeared to win, to separate signal from training noise.&lt;/p&gt;
 </li>
 </ol>
-<p>The heavy runs were executed out-of-notebook in a dedicated <code>nii_rl</code> conda env (conda-built
+&lt;p&gt;The heavy runs were executed out-of-notebook in a dedicated <code>nii_rl</code> conda env (conda-built
 PyTorch; the project's PyMC env hits Windows DLL issues with pip-torch). The runners
 <code>_sweep/run_sweep.py</code> and <code>_sweep/run_seeds.py</code> re-exec this notebook's data/AFNS/LQ pipeline so
-the comparison is identical; results are cached as JSON and rendered below.</p>
+the comparison is identical; results are cached as JSON and rendered below.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -16267,56 +16311,56 @@ the comparison is identical; results are cached as JSON and rendered below.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<style type="text/css">
-</style>
-<table id="T_3fd2e">
-<thead>
-<tr>
-<th class="index_name level0">policy</th>
-<th class="col_heading level0 col0" id="T_3fd2e_level0_col0">Unhedged</th>
-<th class="col_heading level0 col1" id="T_3fd2e_level0_col1">LQ</th>
-<th class="col_heading level0 col2" id="T_3fd2e_level0_col2">RL</th>
-<th class="col_heading level0 col3" id="T_3fd2e_level0_col3">RL/LQ</th>
-</tr>
-<tr>
-<th class="index_name level0">kappa_u</th>
-<th class="blank col0"> </th>
-<th class="blank col1"> </th>
-<th class="blank col2"> </th>
-<th class="blank col3"> </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th class="row_heading level0 row0" id="T_3fd2e_level0_row0">0.000300</th>
-<td class="data row0 col0" id="T_3fd2e_row0_col0">5.214e-03</td>
+&lt;style type="text/css"&gt;
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th class="index_name level0" &gt;policy&lt;/th&gt;
+      &lt;th id="T_3fd2e_level0_col0" class="col_heading level0 col0" &gt;Unhedged&lt;/th&gt;
+      &lt;th id="T_3fd2e_level0_col1" class="col_heading level0 col1" &gt;LQ&lt;/th&gt;
+      &lt;th id="T_3fd2e_level0_col2" class="col_heading level0 col2" &gt;RL&lt;/th&gt;
+      &lt;th id="T_3fd2e_level0_col3" class="col_heading level0 col3" &gt;RL/LQ&lt;/th&gt;
+    
+      &lt;th class="index_name level0" &gt;kappa_u&lt;/th&gt;
+      &lt;th class="blank col0" &gt; &lt;/th&gt;
+      &lt;th class="blank col1" &gt; &lt;/th&gt;
+      &lt;th class="blank col2" &gt; &lt;/th&gt;
+      &lt;th class="blank col3" &gt; &lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th id="T_3fd2e_level0_row0" class="row_heading level0 row0" &gt;0.000300&lt;/th&gt;
+      
+      &lt;th id="T_3fd2e_level0_row1" class="row_heading level0 row1" &gt;0.001000&lt;/th&gt;
+      
+      &lt;th id="T_3fd2e_level0_row2" class="row_heading level0 row2" &gt;0.003000&lt;/th&gt;
+      
+      &lt;th id="T_3fd2e_level0_row3" class="row_heading level0 row3" &gt;0.010000&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table id="T_3fd2e">&lt;tbody&gt;<tr></tr>
+<tr></tr><tr><td class="data row0 col0" id="T_3fd2e_row0_col0">5.214e-03</td>
 <td class="data row0 col1" id="T_3fd2e_row0_col1">2.129e-03</td>
 <td class="data row0 col2" id="T_3fd2e_row0_col2">3.729e-03</td>
 <td class="data row0 col3" id="T_3fd2e_row0_col3">1.752</td>
 </tr>
-<tr>
-<th class="row_heading level0 row1" id="T_3fd2e_level0_row1">0.001000</th>
-<td class="data row1 col0" id="T_3fd2e_row1_col0">5.214e-03</td>
+<tr><td class="data row1 col0" id="T_3fd2e_row1_col0">5.214e-03</td>
 <td class="data row1 col1" id="T_3fd2e_row1_col1">2.195e-03</td>
 <td class="data row1 col2" id="T_3fd2e_row1_col2">1.949e-03</td>
 <td class="data row1 col3" id="T_3fd2e_row1_col3">0.888</td>
 </tr>
-<tr>
-<th class="row_heading level0 row2" id="T_3fd2e_level0_row2">0.003000</th>
-<td class="data row2 col0" id="T_3fd2e_row2_col0">5.214e-03</td>
+<tr><td class="data row2 col0" id="T_3fd2e_row2_col0">5.214e-03</td>
 <td class="data row2 col1" id="T_3fd2e_row2_col1">2.384e-03</td>
 <td class="data row2 col2" id="T_3fd2e_row2_col2">2.330e-03</td>
 <td class="data row2 col3" id="T_3fd2e_row2_col3">0.977</td>
 </tr>
-<tr>
-<th class="row_heading level0 row3" id="T_3fd2e_level0_row3">0.010000</th>
-<td class="data row3 col0" id="T_3fd2e_row3_col0">5.214e-03</td>
+<tr><td class="data row3 col0" id="T_3fd2e_row3_col0">5.214e-03</td>
 <td class="data row3 col1" id="T_3fd2e_row3_col1">3.047e-03</td>
 <td class="data row3 col2" id="T_3fd2e_row3_col2">3.331e-03</td>
 <td class="data row3 col3" id="T_3fd2e_row3_col3">1.093</td>
-</tr>
-</tbody>
-</table>
+</tr>&lt;/tbody&gt;</table>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -16330,50 +16374,50 @@ the comparison is identical; results are cached as JSON and rendered below.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<style type="text/css">
-</style>
-<table id="T_d1e5e">
-<thead>
-<tr>
-<th class="blank level0"> </th>
-<th class="col_heading level0 col0" id="T_d1e5e_level0_col0">lq_cost</th>
-<th class="col_heading level0 col1" id="T_d1e5e_level0_col1">seed0</th>
-<th class="col_heading level0 col2" id="T_d1e5e_level0_col2">seed1</th>
-<th class="col_heading level0 col3" id="T_d1e5e_level0_col3">seed2</th>
-<th class="col_heading level0 col4" id="T_d1e5e_level0_col4">mean</th>
-<th class="col_heading level0 col5" id="T_d1e5e_level0_col5">std</th>
-</tr>
-<tr>
-<th class="index_name level0">kappa_u</th>
-<th class="blank col0"> </th>
-<th class="blank col1"> </th>
-<th class="blank col2"> </th>
-<th class="blank col3"> </th>
-<th class="blank col4"> </th>
-<th class="blank col5"> </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th class="row_heading level0 row0" id="T_d1e5e_level0_row0">0.001000</th>
-<td class="data row0 col0" id="T_d1e5e_row0_col0">0.002</td>
+&lt;style type="text/css"&gt;
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th class="blank level0" &gt; &lt;/th&gt;
+      &lt;th id="T_d1e5e_level0_col0" class="col_heading level0 col0" &gt;lq_cost&lt;/th&gt;
+      &lt;th id="T_d1e5e_level0_col1" class="col_heading level0 col1" &gt;seed0&lt;/th&gt;
+      &lt;th id="T_d1e5e_level0_col2" class="col_heading level0 col2" &gt;seed1&lt;/th&gt;
+      &lt;th id="T_d1e5e_level0_col3" class="col_heading level0 col3" &gt;seed2&lt;/th&gt;
+      &lt;th id="T_d1e5e_level0_col4" class="col_heading level0 col4" &gt;mean&lt;/th&gt;
+      &lt;th id="T_d1e5e_level0_col5" class="col_heading level0 col5" &gt;std&lt;/th&gt;
+    
+      &lt;th class="index_name level0" &gt;kappa_u&lt;/th&gt;
+      &lt;th class="blank col0" &gt; &lt;/th&gt;
+      &lt;th class="blank col1" &gt; &lt;/th&gt;
+      &lt;th class="blank col2" &gt; &lt;/th&gt;
+      &lt;th class="blank col3" &gt; &lt;/th&gt;
+      &lt;th class="blank col4" &gt; &lt;/th&gt;
+      &lt;th class="blank col5" &gt; &lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th id="T_d1e5e_level0_row0" class="row_heading level0 row0" &gt;0.001000&lt;/th&gt;
+      
+      &lt;th id="T_d1e5e_level0_row1" class="row_heading level0 row1" &gt;0.003000&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table id="T_d1e5e">&lt;tbody&gt;<tr></tr>
+<tr></tr><tr><td class="data row0 col0" id="T_d1e5e_row0_col0">0.002</td>
 <td class="data row0 col1" id="T_d1e5e_row0_col1">2.077</td>
 <td class="data row0 col2" id="T_d1e5e_row0_col2">0.893</td>
 <td class="data row0 col3" id="T_d1e5e_row0_col3">0.948</td>
 <td class="data row0 col4" id="T_d1e5e_row0_col4">1.306</td>
 <td class="data row0 col5" id="T_d1e5e_row0_col5">0.546</td>
 </tr>
-<tr>
-<th class="row_heading level0 row1" id="T_d1e5e_level0_row1">0.003000</th>
-<td class="data row1 col0" id="T_d1e5e_row1_col0">0.002</td>
+<tr><td class="data row1 col0" id="T_d1e5e_row1_col0">0.002</td>
 <td class="data row1 col1" id="T_d1e5e_row1_col1">1.049</td>
 <td class="data row1 col2" id="T_d1e5e_row1_col2">0.948</td>
 <td class="data row1 col3" id="T_d1e5e_row1_col3">3.198</td>
 <td class="data row1 col4" id="T_d1e5e_row1_col4">1.732</td>
 <td class="data row1 col5" id="T_d1e5e_row1_col5">1.038</td>
-</tr>
-</tbody>
-</table>
+</tr>&lt;/tbody&gt;</table>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -16391,7 +16435,7 @@ the comparison is identical; results are cached as JSON and rendered below.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Verdict">Verdict<a class="anchor-link" href="#Verdict">¶</a></h3><p><strong>The single-seed sweep is actually misleading. RL does not robustly beat LQ here.</strong></p>
+&lt;h3 id="Verdict"&gt;Verdict<a class="anchor-link" href="#Verdict">¶</a>&lt;/h3&gt;&lt;p&gt;<strong>The single-seed sweep is actually misleading. RL does not robustly beat LQ here.</strong>&lt;/p&gt;
 <ul>
 <li>The single-seed cost frontier shows RL dipping <em>below</em> LQ at <code>kappa_u = 1e-3</code> (ratio 0.89) and
 <code>3e-3</code> (0.98), a tempting "RL wins under realistic frictions" story.</li>
@@ -16400,18 +16444,18 @@ with seed-to-seed std of <strong>0.55</strong> and <strong>1.04</strong>. Indivi
 to <strong>3.20 (3× worse than LQ)</strong>. Some seeds collapse to under-hedged policies. The apparent edge
 sits well inside the training-noise band.</li>
 </ul>
-<p><strong>Why LQ is so hard to beat here.</strong> The one-step NII is <em>contemporaneous</em> in the factor state, so
+&lt;p&gt;<strong>Why LQ is so hard to beat here.</strong> The one-step NII is <em>contemporaneous</em> in the factor state, so
 the optimal hedge is the constant variance-min ratio <code>H_VM</code>. That is an LQG sweet spot: linear
 dynamics, (near-)quadratic cost and Gaussian innovations, where the Riccati gain is essentially
 optimal and certainty-equivalence holds. There is no dynamic or nonlinear structure for a
-function approximator to exploit, so SAC's extra flexibility only adds variance.</p>
+function approximator to exploit, so SAC's extra flexibility only adds variance.&lt;/p&gt;
 <blockquote>
-<p>Even the one place RL's <em>total</em> cost dips below LQ, it does so not by sparse trading (RL turnover
+&lt;p&gt;Even the one place RL's <em>total</em> cost dips below LQ, it does so not by sparse trading (RL turnover
 is actually <strong>higher</strong> than LQ at every point) but by holding <strong>less hedge inventory</strong>, i.e. trading
 a bit more NII variance for a lower <code>lambda_h h^2</code> balance-sheet penalty. On a <strong>risk-only</strong>
-objective (variance + transaction cost, dropping the inventory term) LQ wins at <em>every</em> <code>kappa_u</code>.</p>
+objective (variance + transaction cost, dropping the inventory term) LQ wins at <em>every</em> <code>kappa_u</code>.&lt;/p&gt;
 </blockquote>
-<p><strong>Takeaway / caution.</strong> This is a clean cautionary result on single-seed RL claims: a simple LQ
+&lt;p&gt;<strong>Takeaway / caution.</strong> This is a clean cautionary result on single-seed RL claims: a simple LQ
 controller is the robust optimum for a near-static hedging problem, and SAC's apparent improvements
 evaporate under multi-seed evaluation. Making RL genuinely superior requires changing the
 <em>premise</em> so the optimal policy becomes nonlinear and non-myopic, e.g. a rate-dependent balance
@@ -16419,7 +16463,8 @@ sheet (deposit beta / prepayment so the gap itself moves with the rate path), an
 or IRRBB-constrained objective, impulse-control frictions (fixed ticket costs + lumpy
 instruments), optional/convex hedge instruments (caps/swaptions), regime-switching dynamics, or
 robustness to model uncertainty (train across an ensemble of dynamics, test out-of-sample). Those
-are the directions where RL's flexibility would actually pay for its variance.</p>
+are the directions where RL's flexibility would actually pay for its variance.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -16430,13 +16475,13 @@ are the directions where RL's flexibility would actually pay for its variance.</
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="When-does-reinforcement-learning-beat-optimal-control?">When does reinforcement learning beat optimal control?<a class="anchor-link" href="#When-does-reinforcement-learning-beat-optimal-control?">¶</a></h2><p>Section 9 left a sharp question. On the base NII hedge, SAC only <em>ties</em> the LQ regulator, and its
+&lt;h2 id="When-does-reinforcement-learning-beat-optimal-control?"&gt;When does reinforcement learning beat optimal control?<a class="anchor-link" href="#When-does-reinforcement-learning-beat-optimal-control?">¶</a>&lt;/h2&gt;&lt;p&gt;Section 9 left a sharp question. On the base NII hedge, SAC only <em>ties</em> the LQ regulator, and its
 apparent wins evaporated under multi-seed evaluation. That is the <em>correct</em> outcome for a problem
 whose optimal hedge is essentially a <strong>linear feedback</strong>, i.e. the regime where the discrete algebraic
-Riccati equation is, by construction, optimal. RL's extra flexibility just adds variance.</p>
-<p>So we run the experiment Section 9 pointed to: systematically deform the hedging problem along the
+Riccati equation is, by construction, optimal. RL's extra flexibility just adds variance.&lt;/p&gt;
+&lt;p&gt;So we run the experiment Section 9 pointed to: systematically deform the hedging problem along the
 axes a real <strong>Treasury / ALM</strong> desk actually faces, and at each step ask <em>does RL now beat LQ, and
-why?</em></p>
+why?</em>&lt;/p&gt;
 <ul>
 <li><strong>A — the balance sheet:</strong> make the book rate-dependent (deposit beta + NMD runoff, mortgage
 <strong>prepayment</strong> that reprices the asset yield faster when rates fall, a deposit-rate <strong>floor</strong>).</li>
@@ -16444,9 +16489,10 @@ why?</em></p>
 <li><strong>Instrument:</strong> the linear pay/receive swap vs an optional <strong>interest-rate floor</strong>.</li>
 <li><strong>C — trading frictions:</strong> smooth proportional cost vs a <strong>fixed cost per ticket</strong> (impulse control).</li>
 </ul>
-<p>The full balance-sheet model, the strong (variance-optimal, directly-fitted) LQ baseline, the trained
+&lt;p&gt;The full balance-sheet model, the strong (variance-optimal, directly-fitted) LQ baseline, the trained
 SAC agents and the Monte-Carlo evaluation live in <code>_sweep/</code> (the heavy runs are cached). The cells
-below load and render the results.</p>
+below load and render the results.&lt;/p&gt;
+
 </div>
 </div>
 </div>
@@ -16457,17 +16503,19 @@ below load and render the results.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="The-result-in-one-table">The result in one table<a class="anchor-link" href="#The-result-in-one-table">¶</a></h3><table>
-<thead>
-<tr>
-<th>Deformation</th>
-<th>Optimal hedge</th>
-<th>Winner</th>
-<th>Why</th>
-</tr>
-</thead>
-<tbody>
-<tr>
+&lt;h3 id="The-result-in-one-table"&gt;The result in one table<a class="anchor-link" href="#The-result-in-one-table">¶</a>&lt;/h3&gt;
+&lt;thead&gt;
+
+  &lt;th&gt;Deformation&lt;/th&gt;
+  &lt;th&gt;Optimal hedge&lt;/th&gt;
+  &lt;th&gt;Winner&lt;/th&gt;
+  &lt;th&gt;Why&lt;/th&gt;
+
+&lt;/thead&gt;
+&lt;tbody&gt;
+
+&lt;/tbody&gt;
+<table>&lt;tbody&gt;<tr></tr><tr>
 <td>Base one-period NII hedge</td>
 <td>constant ratio</td>
 <td><strong>tie</strong></td>
@@ -16496,12 +16544,10 @@ below load and render the results.</p>
 <td><strong>nonlinear (s,S) band</strong></td>
 <td><strong>RL</strong></td>
 <td>a smooth quadratic control cost <em>cannot</em> encode a no-trade region</td>
-</tr>
-</tbody>
-</table>
-<p>This is the notebook's headline finding:</p>
+</tr>&lt;/tbody&gt;</table>
+&lt;p&gt;This is the notebook's headline finding:&lt;/p&gt;
 <blockquote>
-<h3 id="RL-beats-LQ-if-and-only-if-the-optimal-policy-is-nonlinear,-and-that-nonlinearity-comes-from-the-cost/constraint-structure,-not-from-richer-economics,-objectives,-or-instruments.">RL beats LQ <strong>if and only if the optimal policy is nonlinear</strong>, and that nonlinearity comes from the cost/constraint <em>structure</em>, not from richer economics, objectives, or instruments.<a class="anchor-link" href="#RL-beats-LQ-if-and-only-if-the-optimal-policy-is-nonlinear,-and-that-nonlinearity-comes-from-the-cost/constraint-structure,-not-from-richer-economics,-objectives,-or-instruments.">¶</a></h3></blockquote>
+&lt;h3 id="RL-beats-LQ-if-and-only-if-the-optimal-policy-is-nonlinear,-and-that-nonlinearity-comes-from-the-cost/constraint-structure,-not-from-richer-economics,-objectives,-or-instruments."&gt;RL beats LQ <strong>if and only if the optimal policy is nonlinear</strong>, and that nonlinearity comes from the cost/constraint <em>structure</em>, not from richer economics, objectives, or instruments.<a class="anchor-link" href="#RL-beats-LQ-if-and-only-if-the-optimal-policy-is-nonlinear,-and-that-nonlinearity-comes-from-the-cost/constraint-structure,-not-from-richer-economics,-objectives,-or-instruments.">¶</a>&lt;/h3&gt;</blockquote>
 </div>
 </div>
 </div>
@@ -16572,94 +16618,94 @@ below load and render the results.</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
-<style type="text/css">
-</style>
-<table id="T_d0748">
-<thead>
-<tr>
-<th class="blank level0"> </th>
-<th class="col_heading level0 col0" id="T_d0748_level0_col0">total cost</th>
-<th class="col_heading level0 col1" id="T_d0748_level0_col1">trade freq</th>
-<th class="col_heading level0 col2" id="T_d0748_level0_col2">NII std</th>
-<th class="col_heading level0 col3" id="T_d0748_level0_col3">vs cont %</th>
-<th class="col_heading level0 col4" id="T_d0748_level0_col4">vs band %</th>
-</tr>
-<tr>
-<th class="index_name level0">policy</th>
-<th class="blank col0"> </th>
-<th class="blank col1"> </th>
-<th class="blank col2"> </th>
-<th class="blank col3"> </th>
-<th class="blank col4"> </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<th class="row_heading level0 row0" id="T_d0748_level0_row0">LQ continuous (band 0)</th>
-<td class="data row0 col0" id="T_d0748_row0_col0">6.915e-03</td>
+&lt;style type="text/css"&gt;
+&lt;/style&gt;
+
+  &lt;thead&gt;
+    
+      &lt;th class="blank level0" &gt; &lt;/th&gt;
+      &lt;th id="T_d0748_level0_col0" class="col_heading level0 col0" &gt;total cost&lt;/th&gt;
+      &lt;th id="T_d0748_level0_col1" class="col_heading level0 col1" &gt;trade freq&lt;/th&gt;
+      &lt;th id="T_d0748_level0_col2" class="col_heading level0 col2" &gt;NII std&lt;/th&gt;
+      &lt;th id="T_d0748_level0_col3" class="col_heading level0 col3" &gt;vs cont %&lt;/th&gt;
+      &lt;th id="T_d0748_level0_col4" class="col_heading level0 col4" &gt;vs band %&lt;/th&gt;
+    
+      &lt;th class="index_name level0" &gt;policy&lt;/th&gt;
+      &lt;th class="blank col0" &gt; &lt;/th&gt;
+      &lt;th class="blank col1" &gt; &lt;/th&gt;
+      &lt;th class="blank col2" &gt; &lt;/th&gt;
+      &lt;th class="blank col3" &gt; &lt;/th&gt;
+      &lt;th class="blank col4" &gt; &lt;/th&gt;
+    
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    
+      &lt;th id="T_d0748_level0_row0" class="row_heading level0 row0" &gt;LQ continuous (band 0)&lt;/th&gt;
+      
+      &lt;th id="T_d0748_level0_row1" class="row_heading level0 row1" &gt;LQ best fixed band (13)&lt;/th&gt;
+      
+      &lt;th id="T_d0748_level0_row2" class="row_heading level0 row2" &gt;RL seed 0&lt;/th&gt;
+      
+      &lt;th id="T_d0748_level0_row3" class="row_heading level0 row3" &gt;RL seed 1&lt;/th&gt;
+      
+      &lt;th id="T_d0748_level0_row4" class="row_heading level0 row4" &gt;RL seed 2&lt;/th&gt;
+      
+      &lt;th id="T_d0748_level0_row5" class="row_heading level0 row5" &gt;RL seed 3&lt;/th&gt;
+      
+      &lt;th id="T_d0748_level0_row6" class="row_heading level0 row6" &gt;RL seed 4&lt;/th&gt;
+      
+      &lt;th id="T_d0748_level0_row7" class="row_heading level0 row7" &gt;RL seed 5&lt;/th&gt;
+      
+  &lt;/tbody&gt;
+<table id="T_d0748">&lt;tbody&gt;<tr></tr>
+<tr></tr><tr><td class="data row0 col0" id="T_d0748_row0_col0">6.915e-03</td>
 <td class="data row0 col1" id="T_d0748_row0_col1">1.00</td>
 <td class="data row0 col2" id="T_d0748_row0_col2">0.0456</td>
 <td class="data row0 col3" id="T_d0748_row0_col3">+0</td>
 <td class="data row0 col4" id="T_d0748_row0_col4">-111</td>
 </tr>
-<tr>
-<th class="row_heading level0 row1" id="T_d0748_level0_row1">LQ best fixed band (13)</th>
-<td class="data row1 col0" id="T_d0748_row1_col0">3.276e-03</td>
+<tr><td class="data row1 col0" id="T_d0748_row1_col0">3.276e-03</td>
 <td class="data row1 col1" id="T_d0748_row1_col1">0.04</td>
 <td class="data row1 col2" id="T_d0748_row1_col2">0.0473</td>
 <td class="data row1 col3" id="T_d0748_row1_col3">+53</td>
 <td class="data row1 col4" id="T_d0748_row1_col4">+0</td>
 </tr>
-<tr>
-<th class="row_heading level0 row2" id="T_d0748_level0_row2">RL seed 0</th>
-<td class="data row2 col0" id="T_d0748_row2_col0">8.120e-03</td>
+<tr><td class="data row2 col0" id="T_d0748_row2_col0">8.120e-03</td>
 <td class="data row2 col1" id="T_d0748_row2_col1">0.52</td>
 <td class="data row2 col2" id="T_d0748_row2_col2">0.0636</td>
 <td class="data row2 col3" id="T_d0748_row2_col3">-17</td>
 <td class="data row2 col4" id="T_d0748_row2_col4">-148</td>
 </tr>
-<tr>
-<th class="row_heading level0 row3" id="T_d0748_level0_row3">RL seed 1</th>
-<td class="data row3 col0" id="T_d0748_row3_col0">2.334e-03</td>
+<tr><td class="data row3 col0" id="T_d0748_row3_col0">2.334e-03</td>
 <td class="data row3 col1" id="T_d0748_row3_col1">0.10</td>
 <td class="data row3 col2" id="T_d0748_row3_col2">0.0389</td>
 <td class="data row3 col3" id="T_d0748_row3_col3">+66</td>
 <td class="data row3 col4" id="T_d0748_row3_col4">+29</td>
 </tr>
-<tr>
-<th class="row_heading level0 row4" id="T_d0748_level0_row4">RL seed 2</th>
-<td class="data row4 col0" id="T_d0748_row4_col0">2.442e-03</td>
+<tr><td class="data row4 col0" id="T_d0748_row4_col0">2.442e-03</td>
 <td class="data row4 col1" id="T_d0748_row4_col1">0.10</td>
 <td class="data row4 col2" id="T_d0748_row4_col2">0.0386</td>
 <td class="data row4 col3" id="T_d0748_row4_col3">+65</td>
 <td class="data row4 col4" id="T_d0748_row4_col4">+25</td>
 </tr>
-<tr>
-<th class="row_heading level0 row5" id="T_d0748_level0_row5">RL seed 3</th>
-<td class="data row5 col0" id="T_d0748_row5_col0">2.386e-03</td>
+<tr><td class="data row5 col0" id="T_d0748_row5_col0">2.386e-03</td>
 <td class="data row5 col1" id="T_d0748_row5_col1">0.10</td>
 <td class="data row5 col2" id="T_d0748_row5_col2">0.0369</td>
 <td class="data row5 col3" id="T_d0748_row5_col3">+66</td>
 <td class="data row5 col4" id="T_d0748_row5_col4">+27</td>
 </tr>
-<tr>
-<th class="row_heading level0 row6" id="T_d0748_level0_row6">RL seed 4</th>
-<td class="data row6 col0" id="T_d0748_row6_col0">2.310e-03</td>
+<tr><td class="data row6 col0" id="T_d0748_row6_col0">2.310e-03</td>
 <td class="data row6 col1" id="T_d0748_row6_col1">0.12</td>
 <td class="data row6 col2" id="T_d0748_row6_col2">0.0368</td>
 <td class="data row6 col3" id="T_d0748_row6_col3">+67</td>
 <td class="data row6 col4" id="T_d0748_row6_col4">+29</td>
 </tr>
-<tr>
-<th class="row_heading level0 row7" id="T_d0748_level0_row7">RL seed 5</th>
-<td class="data row7 col0" id="T_d0748_row7_col0">2.272e-03</td>
+<tr><td class="data row7 col0" id="T_d0748_row7_col0">2.272e-03</td>
 <td class="data row7 col1" id="T_d0748_row7_col1">0.08</td>
 <td class="data row7 col2" id="T_d0748_row7_col2">0.0381</td>
 <td class="data row7 col3" id="T_d0748_row7_col3">+67</td>
 <td class="data row7 col4" id="T_d0748_row7_col4">+31</td>
-</tr>
-</tbody>
-</table>
+</tr>&lt;/tbody&gt;</table>
 </div>
 </div>
 <div class="jp-OutputArea-child">
@@ -16684,14 +16730,14 @@ below load and render the results.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Why-C-is-different,-and-what-it-means-for-a-Treasury-desk">Why C is different, and what it means for a Treasury desk<a class="anchor-link" href="#Why-C-is-different,-and-what-it-means-for-a-Treasury-desk">¶</a></h3><p>Under a <strong>fixed cost per trade</strong> the optimal policy is a textbook impulse-control <strong>(s,S) band</strong>: do
+&lt;h3 id="Why-C-is-different,-and-what-it-means-for-a-Treasury-desk"&gt;Why C is different, and what it means for a Treasury desk<a class="anchor-link" href="#Why-C-is-different,-and-what-it-means-for-a-Treasury-desk">¶</a>&lt;/h3&gt;&lt;p&gt;Under a <strong>fixed cost per trade</strong> the optimal policy is a textbook impulse-control <strong>(s,S) band</strong>: do
 nothing while the hedge drifts inside a no-trade region, then jump back to target when it breaches the
 edge. LQ's cost is <em>quadratic and smooth</em>, i.e. it cannot represent a flat no-trade region or a fixed
 charge, so it rebalances <strong>every month</strong> and pays the ticket each time. RL optimises the true
 (non-smooth) cost and discovers the band: it trades a small fraction of months and times those trades
 where they cut variance most, beating continuous LQ by <strong>~65%</strong> and even a hand-tuned fixed band by
-<strong>~25–30%</strong>, at <em>lower</em> NII variance (left and centre panels).</p>
-<p>For IRRBB / ALM practice this is the decision rule the notebook is really about:</p>
+<strong>~25–30%</strong>, at <em>lower</em> NII variance (left and centre panels).&lt;/p&gt;
+&lt;p&gt;For IRRBB / ALM practice this is the decision rule the notebook is really about:&lt;/p&gt;
 <ul>
 <li><strong>Liquid, low-cost hedging</strong> (linear swaps, cheap frequent rebalancing): the optimal hedge is
 <em>linear</em> → use <strong>LQ / Riccati</strong>. It is optimal, transparent, and far cheaper to deploy and govern
@@ -16699,10 +16745,11 @@ than a trained policy. Reaching for RL here buys nothing but variance and model 
 <li><strong>Costly or lumpy hedging</strong> (wide bid/ask, fixed tickets, discrete instruments, hard position
 limits): the optimum is a <em>nonlinear no-trade band</em> → this is where <strong>RL earns its keep</strong>.</li>
 </ul>
-<p><strong>Honesty over headline.</strong> SAC training is high-variance: RL beat continuous LQ in 5 of the 6 seeds here, but
+&lt;p&gt;<strong>Honesty over headline.</strong> SAC training is high-variance: RL beat continuous LQ in 5 of the 6 seeds here, but
 the occasional run collapses to over-trading (see the per-seed table). The <em>edge is structural</em>: its
 <em>reliable capture</em> is an engineering problem (best-of-$N$ selection, normalised observations, tuned
-exploration), exactly the kind of caveat that separates a real result from a cherry-picked one.</p>
+exploration), exactly the kind of caveat that separates a real result from a cherry-picked one.&lt;/p&gt;
+
 </div>
 </div>
 </div>
